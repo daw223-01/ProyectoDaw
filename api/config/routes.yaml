@@ -1,0 +1,24 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+# api_users:
+#     path: /api/users
+#     controller: App\Controller\DefaultController::index
+#     methods: [GET]
+
+
+    # api_data:
+    # path: /api/data
+    # methods: [GET]
+    # defaults:
+    #     _controller: App\Controller\ApiController::getData
+    # requirements:
+    #     _format: json
+    # options:
+    #     # Agrega la siguiente línea para habilitar CORS en esta ruta
+    #     nelmio_cors:
+    #         enabled: true
+    #         allow_origin: ['*']
+    #         allow_headers: ['Content-Type', 'Authorization']
+    #         allow_methods: ['GET']

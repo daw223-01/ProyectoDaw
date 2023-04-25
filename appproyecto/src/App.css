@@ -1,0 +1,47 @@
+.container{
+  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/personal-weight-training-in-the-gym-royalty-free-image-1568020980.jpg");
+  width: 100%;
+  height: 100vh; /*PAR AQUE OCUPE EL 100% DE LA PANTALLA (DEL VIEWPORT)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10em;
+}
+
+.registro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50vh;
+  padding: 3em;
+  height: 50vh;
+  gap: 2em;
+  border-radius: 5%;
+  backdrop-filter: blur(5px);
+  border: 2px solid white;
+}
+.signup{
+  gap: 1em;
+}
+
+.registro input{
+  width: 100%;
+  font-size: larger;
+  border: 0px;
+  border-bottom: 2px solid rgb(255, 255, 255);;
+  outline: none;
+  background:none;
+  color: black;
+  padding: .5em;
+}
+
+input[type=submit]{
+  background-color: lightgray;
+  border-radius: .5em;
+  border: 0;
+  width: 25%;
+  padding: .5em;
+}
+::placeholder{
+  color: rgb(255, 255, 255);
+}
