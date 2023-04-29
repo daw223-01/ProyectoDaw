@@ -28,7 +28,7 @@ class DefaultController extends AbstractController
      */
     public function usuarios(ManagerRegistry $doctrine)
     {
-        if (isset($_POST)) {
+        if (isset($_REQUEST)) {
 
             //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
             $data = file_get_contents('php://input');
@@ -53,8 +53,11 @@ class DefaultController extends AbstractController
                     if (isset($usuario)) {
                         //SI EL USUARIO EXISTE, ENTRA EN LA APLICACIÓN
                         $datosUsuario = [
-                            'username'=>$usuario->getNombre(),
-                            'correo' => $usuario->getEmail()
+                            'username'=>$usuario->getUsername(),
+                            'correo' => $usuario->getEmail(),
+                            'nombre'=> $usuario->getNombre(),
+                            'apellidos'=>$usuario->getApellidos(),
+                            'contraseña'=>$usuario->getContraseña()
                         ];
                         $respuesta = [true, $datosUsuario];
                         

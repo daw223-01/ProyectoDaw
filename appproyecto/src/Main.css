@@ -25,6 +25,10 @@ header{
     background-color: lightgreen;
     /* horizontal, vertical, blur, extension, color */
     box-shadow: 10px 0px 13px -10px rgba(0,0,0,0.75);
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+
 }
 
 
@@ -33,4 +37,20 @@ header{
     /* background-color: lightskyblue; */
     width: 100%;
     padding: 5%;
+}
+
+#sidebar > div{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    
+}
+#sidebar > div:hover{
+    background-color: rgb(56, 168, 56);
+    color: white;
+    
+}
+#sidebar > div > a{
+    text-decoration: none;
+    color: black;
 }

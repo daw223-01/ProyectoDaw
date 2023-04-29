@@ -2,6 +2,7 @@ import React from "react";
 import './Main.css';
 import Inicio from "./Inicio";
 import Ejercicios from "./Ejercicios";
+import Perfil from "./Perfil";
 import { Link, RouterProvider, createBrowserRouter, BrowserRouter, Route } from 'react-router-dom'
 
 //RUTAS DE LOS DIFERENTES COMPONENTES A RENDERIZAR
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     {
         path: "/ejercicios",
         element: <Ejercicios></Ejercicios>
+    },
+    {
+        path: "/perfil",
+        element: <Perfil></Perfil>
     }
 ]);
 
@@ -36,10 +41,8 @@ export default class Main extends React.Component {
     cerrarSesion() {
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("mail");
+        sessionStorage.removeItem("password");
         window.location.reload();
-    }
-    renderizarElemento() {
-
     }
 
     render() {
@@ -50,16 +53,19 @@ export default class Main extends React.Component {
                     <button onClick={this.cerrarSesion.bind(this)}>Cerrar sesion</button>
                 </header>
 
-                <div id="sidebar" onClick={this.renderizarElemento.bind(this)}>
+                <div id="sidebar">
                     Menu
-                    <ul>
-                        <li>
-                            <a href="/">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="/ejercicios">Ejercicios</a>
-                        </li>
-                    </ul>
+
+                    <div>
+                        <a href="/">Inicio</a>
+                    </div>
+                    <div>
+                        <a href="/ejercicios">Ejercicios</a>
+                    </div>
+                    <div>
+                        <a href="/perfil">Perfil</a>
+                    </div>
+
                 </div>
 
                 <div id="content">

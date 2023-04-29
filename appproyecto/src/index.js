@@ -22,18 +22,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 if (!sessionStorage.getItem('username') && !sessionStorage.getItem('mail')) {
   root.render(
     //RENDERIZADO LOGIN
-    <React.StrictMode>
-      <App></App>
-    </React.StrictMode>
+    <App></App>
 
   );
-}else{
+} else {
   root.render(
     //RENDERIZADO PAGINA PRINCIPAL
-    <React.StrictMode>
-      <Main></Main>
-    </React.StrictMode>
-  
+    <Main></Main>
+
   );
 }
 

@@ -47,6 +47,7 @@ export default class App extends React.Component {
             //SE INICIA LA SESION            
             sessionStorage.setItem("username", datos.username);
             sessionStorage.setItem("mail", datos.correo);
+            sessionStorage.setItem("password", datos.contraseña);
             window.location.reload();
             
           }else if (tipoFormulario.className === "registro signup") {
@@ -72,7 +73,7 @@ export default class App extends React.Component {
       <div className='container'>
         <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
           <h2>LOGIN</h2>
-          <input type='text' name='user' placeholder='User/email' required></input>
+          <input type='text' name='user' placeholder='Email' required></input>
           <input type='password' name='password' placeholder='Password' required></input>
           <input type="submit"></input>
         </form>
