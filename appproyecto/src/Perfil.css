@@ -1,0 +1,21 @@
+#datosPersonales {
+    width: 100%;
+}
+
+#datosPersonales > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#datosPersonales > form>input {
+    width: 30%;
+}
+
+#datosPersonales > form > input[type=submit] {
+    background-color: gray;
+    border-radius: .5em;
+    border: 0;
+    width: 10%;
+    padding: .5em;
+}

@@ -47,20 +47,19 @@ class DefaultController extends AbstractController
 
                     //BUSCAR EN LA BASE DE DATOS SI EL USUARIO ESTÁ REGISTRADO
                     //COMPRUEBA EL EMAIL Y LA CONTRASEÑA
-                    $usuario = $repositorio->findOneBy(array('email' => $email, 'contraseña'=>$password));
-                    
+                    $usuario = $repositorio->findOneBy(array('email' => $email, 'contraseña' => $password));
+
 
                     if (isset($usuario)) {
                         //SI EL USUARIO EXISTE, ENTRA EN LA APLICACIÓN
                         $datosUsuario = [
-                            'username'=>$usuario->getUsername(),
+                            'username' => $usuario->getUsername(),
                             'correo' => $usuario->getEmail(),
-                            'nombre'=> $usuario->getNombre(),
-                            'apellidos'=>$usuario->getApellidos(),
-                            'contraseña'=>$usuario->getContraseña()
+                            'nombre' => $usuario->getNombre(),
+                            'apellidos' => $usuario->getApellidos(),
+                            'contraseña' => $usuario->getContraseña()
                         ];
                         $respuesta = [true, $datosUsuario];
-                        
                     } else {
                         $respuesta = [false, "Correo y/o contraseña no coinciden"];
                     }
@@ -93,7 +92,7 @@ class DefaultController extends AbstractController
 
                         //SE CREA UN USUARIO PARA INICIAR SESION
                         $datosUsuario = [
-                            'username'=>$newUser->getNombre(),
+                            'username' => $newUser->getNombre(),
                             'correo' => $newUser->getEmail()
                         ];
 
@@ -118,5 +117,45 @@ class DefaultController extends AbstractController
         }
     }
 
+    /**
+     * @Route("/update", name="actualizarDatos")
+     */
+    public function update(ManagerRegistry $doctrine)
+    {
+        if (isset($_REQUEST)) {
 
+            //OBTENER LOS DATOS RECIBIDOS
+            $data = file_get_contents('php://input');
+
+            //CONVERTIR LA INFORMACION EN UN ARRAY. MÁS FACIL DE MANEJAR EN EL JS DESPUES
+            $infousuario = json_decode($data, true);
+
+            //BUSCAR EL USUARIO EN LA BDD Y HACER UPDATE DE ESOS DATOS
+            $entityManager = $doctrine->getManager();
+            $repositorio = $doctrine->getRepository(Usuarios::class);
+
+            $username = $infousuario['username'];
+            $usuario = $repositorio->findOneBy(array('username' => $username));
+
+            if (isset($infousuario['contraseña'])) {
+                $contraseña = $infousuario['contraseña'];
+
+                $usuario->setContraseña($contraseña);
+            } else {
+                $nombre = $infousuario['nombre'];
+                $apellidos = $infousuario['apellidos'];
+                $correo = $infousuario['correo'];
+
+                $usuario->setNombre($nombre);
+                $usuario->setApellidos($apellidos);
+                $usuario->setEmail($correo);
+            }
+
+            //ACTUALIZAMOS LA BDD CON LOS NUEVOS DATOS
+            $entityManager->flush();
+            $respuesta = "Datos actaulizados. Es necesario volver a iniciar sesion";
+
+            return new Response(json_encode($respuesta));
+        }
+    }
 }

@@ -1,7 +1,7 @@
 .container{
   background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/personal-weight-training-in-the-gym-royalty-free-image-1568020980.jpg");
   width: 100%;
-  height: 100vh; /*PAR AQUE OCUPE EL 100% DE LA PANTALLA (DEL VIEWPORT)*/
+  height: 100vh; /*PARA AQUE OCUPE EL 100% DE LA PANTALLA (DEL VIEWPORT)*/
   display: flex;
   justify-content: center;
   align-items: center;
