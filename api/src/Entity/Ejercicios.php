@@ -24,6 +24,15 @@ class Ejercicios
     #[ORM\ManyToMany(targetEntity: Rutinas::class, mappedBy: 'id_ejercicio')]
     private Collection $id_rutina;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $descripcion = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $url_video = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $url_img = null;
+
     public function __construct()
     {
         $this->id_rutina = new ArrayCollection();
@@ -81,6 +90,42 @@ class Ejercicios
         if ($this->id_rutina->removeElement($idRutina)) {
             $idRutina->removeIdEjercicio($this);
         }
+
+        return $this;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(?string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getUrlVideo(): ?string
+    {
+        return $this->url_video;
+    }
+
+    public function setUrlVideo(?string $url_video): self
+    {
+        $this->url_video = $url_video;
+
+        return $this;
+    }
+
+    public function getUrlImg(): ?string
+    {
+        return $this->url_img;
+    }
+
+    public function setUrlImg(?string $url_img): self
+    {
+        $this->url_img = $url_img;
 
         return $this;
     }

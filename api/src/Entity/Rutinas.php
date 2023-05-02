@@ -25,14 +25,14 @@ class Rutinas
     #[ORM\ManyToMany(targetEntity: Ejercicios::class, inversedBy: 'id_rutina')]
     private Collection $id_ejercicio;
 
-    #[ORM\Column]
-    private ?int $rondas = null;
+    // #[ORM\Column]
+    // private ?int $rondas = null;
 
-    #[ORM\Column]
-    private ?int $repeticiones = null;
+    // #[ORM\Column]
+    // private ?int $repeticiones = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $tiempo = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $tiempo = null;
 
     public function __construct()
     {
@@ -92,39 +92,39 @@ class Rutinas
         return $this;
     }
 
-    public function getRondas(): ?int
-    {
-        return $this->rondas;
-    }
+    // public function getRondas(): ?int
+    // {
+    //     return $this->rondas;
+    // }
 
-    public function setRondas(int $rondas): self
-    {
-        $this->rondas = $rondas;
+    // public function setRondas(int $rondas): self
+    // {
+    //     $this->rondas = $rondas;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getRepeticiones(): ?int
-    {
-        return $this->repeticiones;
-    }
+    // public function getRepeticiones(): ?int
+    // {
+    //     return $this->repeticiones;
+    // }
 
-    public function setRepeticiones(int $repeticiones): self
-    {
-        $this->repeticiones = $repeticiones;
+    // public function setRepeticiones(int $repeticiones): self
+    // {
+    //     $this->repeticiones = $repeticiones;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getTiempo(): ?string
-    {
-        return $this->tiempo;
-    }
+    // public function getTiempo(): ?string
+    // {
+    //     return $this->tiempo;
+    // }
 
-    public function setTiempo(string $tiempo): self
-    {
-        $this->tiempo = $tiempo;
+    // public function setTiempo(string $tiempo): self
+    // {
+    //     $this->tiempo = $tiempo;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

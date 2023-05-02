@@ -33,6 +33,9 @@ class Usuarios
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $progreso = null;
+
     public function __construct()
     {
         $this->id_rutina = new ArrayCollection();
@@ -129,6 +132,18 @@ class Usuarios
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getProgreso(): ?string
+    {
+        return $this->progreso;
+    }
+
+    public function setProgreso(?string $progreso): self
+    {
+        $this->progreso = $progreso;
 
         return $this;
     }
