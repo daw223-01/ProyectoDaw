@@ -1,0 +1,13 @@
+#containerEjercicios{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#containerEjercicios > .datosEjercicio{
+    width: 100%;
+}
+
+.datosEjercicio > img {
+    width: 50%;
+}

@@ -14,6 +14,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Ejercicios;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -156,6 +157,43 @@ class DefaultController extends AbstractController
             $respuesta = "Datos actaulizados. Es necesario volver a iniciar sesion";
 
             return new Response(json_encode($respuesta));
+        }
+    }
+
+    /**
+     * @Route("/ejercicios", name="listaEjercicios")
+     */
+    public function ejercicios(ManagerRegistry $doctrine){
+        if (isset($_REQUEST)) {
+
+            $entityManager = $doctrine->getManager();
+            $repositorio = $doctrine->getRepository(Ejercicios::class);
+
+            //BUSCAR EN LA BASE DE DATOS TODOS LOS DATOS DE EJERCICIOS
+            $consulta = $repositorio->findAll();
+
+            $listaEjercicios = array();
+
+            foreach ($consulta as $ejercicio ) {
+                $datos = [
+                    'nombre'=>$ejercicio->getNombre(),
+                    'grupoMuscular'=>$ejercicio->getGrupoMuscular(),
+                    'descripcion'=>$ejercicio->getDescripcion(),
+                    'urlVideo'=>$ejercicio->getUrlVideo(),
+                    'urlImg'=>$ejercicio->getUrlImg()
+                ];
+                // $datos = [
+                //     $ejercicio->getNombre(),
+                //     $ejercicio->getGrupoMuscular(),
+                //     $ejercicio->getDescripcion(),
+                //     $ejercicio->getUrlVideo(),
+                //     $ejercicio->getUrlImg()
+                // ];
+                array_push($listaEjercicios, $datos);
+            }
+
+            return new Response(json_encode($listaEjercicios));
+            
         }
     }
 }

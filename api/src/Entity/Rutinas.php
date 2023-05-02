@@ -20,7 +20,7 @@ class Rutinas
 
     #[ORM\ManyToOne(inversedBy: 'id_rutina')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?usuarios $id_usuario = null;
+    private ?Usuarios $id_usuario = null;
 
     #[ORM\ManyToMany(targetEntity: Ejercicios::class, inversedBy: 'id_rutina')]
     private Collection $id_ejercicio;
@@ -56,12 +56,12 @@ class Rutinas
         return $this;
     }
 
-    public function getIdUsuario(): ?usuarios
+    public function getIdUsuario(): ?Usuarios
     {
         return $this->id_usuario;
     }
 
-    public function setIdUsuario(?usuarios $id_usuario): self
+    public function setIdUsuario(?Usuarios $id_usuario): self
     {
         $this->id_usuario = $id_usuario;
 
