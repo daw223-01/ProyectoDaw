@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Button from 'react-bootstrap/Button';
+// import Form from 'react-bootstrap/Form';
 
 
 /* PANTALLA PRINCIPAL DEL PROGAMA. PANTALLA DE BIENVENIDA */
@@ -47,16 +50,15 @@ export default class App extends React.Component {
             //SE INICIA LA SESION            
             sessionStorage.setItem("username", datos.username);
             sessionStorage.setItem("mail", datos.correo);
-            sessionStorage.setItem("password", datos.contraseña);
             window.location.reload();
-            
-          }else if (tipoFormulario.className === "registro signup") {
+
+          } else if (tipoFormulario.className === "registro signup") {
             //SE INICIA LA SESION
             sessionStorage.setItem("username", datos.username);
             sessionStorage.setItem("mail", datos.correo);
             window.location.reload();
           }
-        }else{
+        } else {
           alert(datos);
         }
 

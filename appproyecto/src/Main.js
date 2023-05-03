@@ -73,6 +73,10 @@ export default class Main extends React.Component {
                     {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                     <RouterProvider router={router}></RouterProvider>
                 </div>
+
+                <footer>
+                    Footer
+                </footer>
             </div>
         )
     }
