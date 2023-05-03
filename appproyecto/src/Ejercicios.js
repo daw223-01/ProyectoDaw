@@ -41,15 +41,10 @@ export default class Ejercicios extends React.Component {
     }
 
     render() {
-
+        console.log(this.state.ej[3])
         //COMO EL RESULTADO ES UN OBJETO CON OBJETOS, SE DEBE ITERAR DE ESTA FORMA
         let lista = Object.keys(this.state.ej).map((element, i) => (
             
-            // <div key={i} className="datosEjercicio">
-            //     {console.log(element)}
-            //     <img src={this.state.ej[element].img}></img>
-            //     <h2>{this.state.ej[element].nombre}</h2>
-            // </div>
             <Ejercicio src={this.state.ej[element].img} titulo={this.state.ej[element].nombre} desc={this.state.ej[element].descripcion}></Ejercicio>
         ));
         return (
@@ -82,11 +77,12 @@ class Ejercicio extends React.Component {
         super(props);
     }
     render() {
+        
         return (
             <div className="ejercicio">
                 <img src={this.props.src} alt="No img"></img>
                 <h3>{this.props.titulo}</h3>
-                <p>{this.props.descripcion}</p>
+                <p>{this.props.desc}</p>
             </div>
         )
     }
