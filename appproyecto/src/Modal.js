@@ -18,9 +18,6 @@ export default class Modal extends React.Component {
         let modal = document.querySelector("#modal");
         modal.style.display = "none";
 
-        let video = modal.querySelector(".containerModal .modalContent video");
-        video.src = "";
-        console.log(video.src);
     }
 
     componentDidUpdate() {
@@ -43,8 +40,7 @@ export default class Modal extends React.Component {
                     <span onClick={this.closeModal.bind(this)}>x</span>
                     <div className="modalContent">
 
-                        <video autoPlay loop muted>
-                            <source src={urlVideo} type="video/mp4"></source>
+                        <video src={urlVideo} autoPlay loop muted >
                         </video>
 
                         <h3>{titulo}</h3>

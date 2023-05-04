@@ -42,6 +42,12 @@ export default class Ejercicios extends React.Component {
     componentDidMount() {
         //EJECUTAR LA FUNCION AL RENDERIZAR EL COMPONENTE
         this.renderEjercicios();
+
+        //SE ACTUALIZA EL ESTADO AL PRINCIPIO PARA QUE DESPUÉS SE EJECUTE BIEN
+        //EL CAMBIO DE ESTADO
+        this.setState({
+            carga: true
+        })
     }
 
 
@@ -56,7 +62,9 @@ export default class Ejercicios extends React.Component {
         this.setState({
             datosEj: datos,
             carga: true
-        }, ()=>{});
+        }, ()=>{
+            console.log(this.state.carga);
+        });
 
     }
 
@@ -78,11 +86,12 @@ export default class Ejercicios extends React.Component {
 
         return (
             <div id="containerEjercicios">
+                {this.state.carga ?
+                    <Modal datos={this.state.datosEj}></Modal> :
+                    null
+                }
                 {lista}
                 
-                {this.state.carga &&
-                    <Modal datos={this.state.datosEj}></Modal>
-                }
             </div>
         )
 
