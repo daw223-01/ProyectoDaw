@@ -1,12 +1,15 @@
 import { element } from "prop-types";
 import React from "react";
 import './Ejercicios.css';
+import Modal from "./Modal";
 
 export default class Ejercicios extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ej: ""
+            ej: "",
+            datosEj: "",
+            carga: false
         }
     }
 
@@ -31,27 +34,58 @@ export default class Ejercicios extends React.Component {
 
         this.setState({
             ej: listado
-        }, () => { });
+        });
 
     }
 
+    //SE EJECUTA AL INICIO
     componentDidMount() {
         //EJECUTAR LA FUNCION AL RENDERIZAR EL COMPONENTE
         this.renderEjercicios();
     }
 
+
+    //ESTABLECER LOS DATOS DEL EJERCICIO QUE SE SELECCIONA
+    /**El objetivo es mandar esta funcion como "prop" del componente Ejercicio.
+     * Este componente tendrá una función que se ejecuta al hacer click sobre el
+     * Esa función en realidad lo que hace es ejecutar el "prop funcion" mandado anteriormente
+     * De esta forma, se puede cambiar el estado del componente Ejercicios desde el componente Ejercicio y pasar
+     * ese estado como "prop" al componente Modal
+     */
+    datosEjercicio(datos) {
+        this.setState({
+            datosEj: datos,
+            carga: true
+        }, ()=>{});
+
+    }
+
+
     render() {
-        console.log(this.state.ej[3])
+
         //COMO EL RESULTADO ES UN OBJETO CON OBJETOS, SE DEBE ITERAR DE ESTA FORMA
         let lista = Object.keys(this.state.ej).map((element, i) => (
-            
-            <Ejercicio src={this.state.ej[element].img} titulo={this.state.ej[element].nombre} desc={this.state.ej[element].descripcion}></Ejercicio>
+
+            <Ejercicio
+                src={this.state.ej[element].img}
+                titulo={this.state.ej[element].nombre}
+                desc={this.state.ej[element].descripcion}
+                musc={this.state.ej[element].grupoMuscular}
+                video={this.state.ej[element].video}
+                datosEj={this.datosEjercicio.bind(this)}
+            ></Ejercicio>
         ));
+
         return (
             <div id="containerEjercicios">
                 {lista}
+                
+                {this.state.carga &&
+                    <Modal datos={this.state.datosEj}></Modal>
+                }
             </div>
         )
+
     }
 }
 
@@ -73,13 +107,26 @@ async function getEjercicios() {
 }
 
 class Ejercicio extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
+
+    //AÑADIR DATOS PARA MANDARLOS DE VUELTA
+    añadirDatos() {
+        let datos = {
+            titulo: this.props.titulo,
+            video: this.props.video,
+            descripcion: this.props.desc,
+            display: true
+        }
+
+        this.props.datosEj(datos);
+    }
+
     render() {
-        
+
         return (
-            <div className="ejercicio">
+            <div className="ejercicio" onClick={this.añadirDatos.bind(this)}>
                 <img src={this.props.src} alt="No img"></img>
                 <h3>{this.props.titulo}</h3>
                 <p>{this.props.desc}</p>
@@ -87,3 +134,4 @@ class Ejercicio extends React.Component {
         )
     }
 }
+

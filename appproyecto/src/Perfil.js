@@ -28,7 +28,7 @@ export default class Perfil extends React.Component {
                 correo: datos[1].correo,
                 username: datos[1].username,
                 contraseña: datos[1].contraseña
-            });
+            }, () => { });
         } catch (error) {
             alert(error);
         }
