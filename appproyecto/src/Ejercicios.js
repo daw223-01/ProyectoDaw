@@ -62,7 +62,7 @@ export default class Ejercicios extends React.Component {
         this.setState({
             datosEj: datos,
             carga: true
-        }, ()=>{
+        }, () => {
             console.log(this.state.carga);
         });
 
@@ -86,12 +86,13 @@ export default class Ejercicios extends React.Component {
 
         return (
             <div id="containerEjercicios">
-                {this.state.carga ?
+                <Modal datos={this.state.datosEj}></Modal>
+                {/* {this.state.carga ?
                     <Modal datos={this.state.datosEj}></Modal> :
                     null
-                }
+                } */}
                 {lista}
-                
+
             </div>
         )
 
