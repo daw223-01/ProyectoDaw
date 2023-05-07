@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use App\Entity\Ejercicios;
+use App\Entity\Rutinas;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -163,7 +164,8 @@ class DefaultController extends AbstractController
     /**
      * @Route("/ejercicios", name="listaEjercicios")
      */
-    public function ejercicios(ManagerRegistry $doctrine){
+    public function ejercicios(ManagerRegistry $doctrine)
+    {
         if (isset($_REQUEST)) {
 
             $entityManager = $doctrine->getManager();
@@ -174,13 +176,13 @@ class DefaultController extends AbstractController
 
             $listaEjercicios = array();
 
-            foreach ($consulta as $ejercicio ) {
+            foreach ($consulta as $ejercicio) {
                 $datos = [
-                    'nombre'=>$ejercicio->getNombre(),
-                    'grupoMuscular'=>$ejercicio->getGrupoMuscular(),
-                    'descripcion'=>$ejercicio->getDescripcion(),
-                    'urlVideo'=>$ejercicio->getUrlVideo(),
-                    'urlImg'=>$ejercicio->getUrlImg()
+                    'nombre' => $ejercicio->getNombre(),
+                    'grupoMuscular' => $ejercicio->getGrupoMuscular(),
+                    'descripcion' => $ejercicio->getDescripcion(),
+                    'urlVideo' => $ejercicio->getUrlVideo(),
+                    'urlImg' => $ejercicio->getUrlImg()
                 ];
                 // $datos = [
                 //     $ejercicio->getNombre(),
@@ -193,7 +195,43 @@ class DefaultController extends AbstractController
             }
 
             return new Response(json_encode($listaEjercicios));
-            
         }
+    }
+
+    /**
+     * @Route("/getrutinas", name="listaRutinas")
+     */
+    public function getRutinas(ManagerRegistry $doctrine){
+        if (isset($_REQUEST)) {
+            //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
+            $data = file_get_contents('php://input');
+
+            //CONVERTIR LA INFORMACION EN UN ARRAY. MÁS FACIL DE MANEJAR EN EL JS DESPUES
+            $infousuario = json_decode($data, true);
+
+            //OBTENER EL USUARIO CON LOS DATOS ENVIADOS
+            $entityManager = $doctrine->getManager();
+            $usuario = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username'=>$infousuario));
+
+            if (isset($usuario)) {
+                //OBTENER EL ID DEL USUARIO
+                $idUsuario = $usuario->getId();
+
+                //CON EL ID DEL USUARIO, OBTENER LAS RUTINAS QUE LE PERTENECEN
+                $rutinas = $doctrine->getRepository(Rutinas::class)->findBy(array('id_usuario'=>$idUsuario));
+                $listado = [];
+                foreach ($rutinas as $rut) {
+                    array_push($listado, $rut->getNombre());
+                }
+
+
+                return new Response(json_encode($listado));
+            }else{
+                return new Response(json_encode("No Encontrado"));
+            }
+
+            // return new Response(json_encode($usuario));
+        }
+
     }
 }

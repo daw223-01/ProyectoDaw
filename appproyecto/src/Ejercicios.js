@@ -88,7 +88,6 @@ export default class Ejercicios extends React.Component {
             <div id="containerEjercicios">
                 <Modal datos={this.state.datosEj}></Modal>
                 {lista}
-
             </div>
         )
 
