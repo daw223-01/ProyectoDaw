@@ -87,10 +87,6 @@ export default class Ejercicios extends React.Component {
         return (
             <div id="containerEjercicios">
                 <Modal datos={this.state.datosEj}></Modal>
-                {/* {this.state.carga ?
-                    <Modal datos={this.state.datosEj}></Modal> :
-                    null
-                } */}
                 {lista}
 
             </div>
@@ -136,7 +132,7 @@ class Ejercicio extends React.Component {
     render() {
 
         return (
-            <div className="ejercicio" onClick={this.añadirDatos.bind(this)}>
+            <div className="ejercicio" data-bs-toggle="modal" data-bs-target="#ventanaModal" onClick={this.añadirDatos.bind(this)}>
                 <img src={this.props.src} alt="No img"></img>
                 <h3>{this.props.titulo}</h3>
                 <p>{this.props.desc}</p>

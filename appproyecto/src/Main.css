@@ -1,45 +1,62 @@
-.main{
-    min-height: 100vh;
-    width: 100%;
+#main {
     background-color: lightgray;
+    /* min-height: 100%;
+    width: 100%; */
+    /* background-color: lightgray;
     display: grid;
     grid-template-areas: 'header header' 'sidebar contenido' 'foot foot';
     grid-template-rows: 10vh 1fr 10vh;
     grid-template-columns: 10% 90%;
-    transition: grid-template-columns .3s ease;
-    
+    transition: grid-template-columns .3s ease; */
+
 }
-.main2{
+
+header {
+    background-color: rgb(219, 103, 103);
+}
+
+#sidebar {
+    background-color: rgb(219, 103, 103);
+    /* horizontal, vertical, blur, extension, color */
+    /* box-shadow: 10px 0px 13px -10px rgba(0,0,0,0.75); */
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+footer{
+    background-color: gray;
+}
+
+/* .main2{
     grid-template-columns: 5% 95%;
 }
 
 header{
     grid-area: header;
     background-color: lightcoral;
-    /* width: 100%; */
     
 }
-
 footer{
     grid-area: foot;
     background-color: gray;
-}
+} */
 
-#sidebar{
+    /* #sidebar{
     grid-area: sidebar;
     background-color: lightgreen;
     /* horizontal, vertical, blur, extension, color */
-    box-shadow: 10px 0px 13px -10px rgba(0,0,0,0.75);
+    /* box-shadow: 10px 0px 13px -10px rgba(0,0,0,0.75);
     display: flex;
     flex-direction: column;
     gap: 2%;
 
-}
+} */
 
 
-#content{
+    /* #content{
     grid-area: contenido;
-    /* background-color: lightskyblue; */
     padding: 5%;
 }
 
@@ -56,4 +73,4 @@ footer{
 #sidebar > div > a{
     text-decoration: none;
     color: black;
-}
+} */

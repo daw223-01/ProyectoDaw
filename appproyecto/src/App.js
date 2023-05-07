@@ -72,9 +72,36 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
+      <div className='bienvenida container-fluid h-100'>
+        <div class="row align-items-center justify-content-around h-100">
+          <div class="card col-lg-3 col-md-6">
+            <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
+              <h2>LOGIN</h2>
+
+              <input type='text' name='user' placeholder='Email' className='form-control' required></input>
+              <input type='password' name='password' placeholder='Password' className='form-control' required></input>
+              <input type="submit" className='btn btn-outline-light'></input>
+            </form>
+          </div>
+
+          <div class="card col-lg-3 col-md-6">
+            <form className='registro signup' onSubmit={this.handleSubmit.bind(this)}>
+              <h2>SIGN UP</h2>
+
+              <input type='text' name='user' placeholder='User name' className='form-control' required></input>
+              <input type='text' name='name' placeholder='Nombre' className='form-control' required></input>
+              <input type='text' name='lastname' placeholder='Apellidos' className='form-control'></input>
+              <input type='email' name='email' placeholder='Email' className='form-control' required></input>
+              <input type='password' name='password' placeholder='Password' className='password form-control' required></input>
+              <input type='password' name='repeat-password' placeholder='Repeat Password' className='form-control' required onChange={this.comprobarPassword}></input>
+              <input type="submit" className='btn btn-outline-light'></input>
+            </form>
+          </div>
+        </div>
+
+        {/* <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
           <h2>LOGIN</h2>
+
           <input type='text' name='user' placeholder='Email' required></input>
           <input type='password' name='password' placeholder='Password' required></input>
           <input type="submit"></input>
@@ -88,7 +115,7 @@ export default class App extends React.Component {
           <input type='password' name='password' placeholder='Password' className='password' required></input>
           <input type='password' name='repeat-password' placeholder='Repeat Password' required onChange={this.comprobarPassword}></input>
           <input type="submit"></input>
-        </form>
+        </form> */}
 
       </div>
 
