@@ -1,6 +1,15 @@
 import React from "react";
 import './Rutinas.css';
 
+/**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
+
+//RUTA DE PRODUCCION
+//let rutaProd = "http://now-exercise.ddns.net/api";
+
+//RUTA DE DESARROLLO
+let rutaDes = "http://localhost/api";
+
+
 export default class Rutinas extends React.Component {
 
     //FUNCION QUE EJECUTA OBTENER DATOS
@@ -42,7 +51,7 @@ async function getRutinas() {
         },
         body: JSON.stringify(username)
     }
-    let consulta = await fetch("http://localhost/api/getrutinas", options);
+    let consulta = await fetch(rutaDes+"/getrutinas", options);
 
     if (consulta.ok) {
         return consulta.json();

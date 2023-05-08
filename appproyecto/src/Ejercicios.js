@@ -3,6 +3,15 @@ import React from "react";
 import './Ejercicios.css';
 import Modal from "./Modal";
 
+/**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
+
+//RUTA DE PRODUCCION
+//let rutaProd = "http://now-exercise.ddns.net/api";
+
+//RUTA DE DESARROLLO
+let rutaDes = "http://localhost/api";
+
+
 export default class Ejercicios extends React.Component {
     constructor(props) {
         super(props);
@@ -104,7 +113,7 @@ async function getEjercicios() {
             'Content-Type': 'application/json'
         }
     }
-    let consulta = await fetch("http://localhost/api/ejercicios", options);
+    let consulta = await fetch(rutaDes + "/ejercicios", options);
 
     if (consulta.ok) {
         return consulta.json();

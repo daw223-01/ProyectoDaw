@@ -6,6 +6,14 @@ import Perfil from "./Perfil";
 import { Link, RouterProvider, createBrowserRouter, BrowserRouter, Route } from 'react-router-dom'
 import Rutinas from "./Rutinas";
 
+/**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
+
+//RUTA DE PRODUCCION
+//let rutaProd = "http://now-exercise.ddns.net/api";
+
+//RUTA DE DESARROLLO
+let rutaDes = "http://localhost/api";
+
 //RUTAS DE LOS DIFERENTES COMPONENTES A RENDERIZAR
 const router = createBrowserRouter([
     {

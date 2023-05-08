@@ -1,9 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
+
+/**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
+
+//RUTA DE PRODUCCION
+//let rutaProd = "http://now-exercise.ddns.net/api";
+
+//RUTA DE DESARROLLO
+let rutaDes = "http://localhost/api";
 
 
 /* PANTALLA PRINCIPAL DEL PROGAMA. PANTALLA DE BIENVENIDA */
@@ -99,24 +104,6 @@ export default class App extends React.Component {
           </div>
         </div>
 
-        {/* <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
-          <h2>LOGIN</h2>
-
-          <input type='text' name='user' placeholder='Email' required></input>
-          <input type='password' name='password' placeholder='Password' required></input>
-          <input type="submit"></input>
-        </form>
-        <form className='registro signup' onSubmit={this.handleSubmit.bind(this)}>
-          <h2>SIGN UP</h2>
-          <input type='text' name='user' placeholder='User name' required></input>
-          <input type='text' name='name' placeholder='Nombre' required></input>
-          <input type='text' name='lastname' placeholder='Apellidos'></input>
-          <input type='email' name='email' placeholder='Email' required></input>
-          <input type='password' name='password' placeholder='Password' className='password' required></input>
-          <input type='password' name='repeat-password' placeholder='Repeat Password' required onChange={this.comprobarPassword}></input>
-          <input type="submit"></input>
-        </form> */}
-
       </div>
 
     );
@@ -167,7 +154,7 @@ async function consultaApi(datos) {
     },
     body: JSON.stringify(datos)
   }
-  let consulta = await fetch("http://localhost/api/users", options);
+  let consulta = await fetch(rutaDes + "/users", options);
   if (consulta.status === 200) {
     return consulta.json();
 
