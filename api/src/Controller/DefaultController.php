@@ -201,7 +201,8 @@ class DefaultController extends AbstractController
     /**
      * @Route("/getrutinas", name="listaRutinas")
      */
-    public function getRutinas(ManagerRegistry $doctrine){
+    public function getRutinas(ManagerRegistry $doctrine)
+    {
         if (isset($_REQUEST)) {
             //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
             $data = file_get_contents('php://input');
@@ -211,14 +212,14 @@ class DefaultController extends AbstractController
 
             //OBTENER EL USUARIO CON LOS DATOS ENVIADOS
             $entityManager = $doctrine->getManager();
-            $usuario = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username'=>$infousuario));
+            $usuario = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username' => $infousuario));
 
             if (isset($usuario)) {
                 //OBTENER EL ID DEL USUARIO
                 $idUsuario = $usuario->getId();
 
                 //CON EL ID DEL USUARIO, OBTENER LAS RUTINAS QUE LE PERTENECEN
-                $rutinas = $doctrine->getRepository(Rutinas::class)->findBy(array('id_usuario'=>$idUsuario));
+                $rutinas = $doctrine->getRepository(Rutinas::class)->findBy(array('id_usuario' => $idUsuario));
                 $listado = [];
                 foreach ($rutinas as $rut) {
                     array_push($listado, $rut->getNombre());
@@ -226,12 +227,46 @@ class DefaultController extends AbstractController
 
 
                 return new Response(json_encode($listado));
-            }else{
+            } else {
                 return new Response(json_encode("No Encontrado"));
             }
 
             // return new Response(json_encode($usuario));
         }
+    }
 
+    /**
+     * @Route("/setrutinas", name="setRutinas")
+     */
+    public function setRutinas(ManagerRegistry $doctrine)
+    {
+        if (isset($_REQUEST)) {
+            //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
+            $data = file_get_contents('php://input');
+
+            //CONVERTIR LA INFORMACION EN UN ARRAY. MÁS FACIL DE MANEJAR EN EL JS DESPUES
+            $infoRutina = json_decode($data, true);
+            // echo ($infoRutina);
+            $nombreRutina = $infoRutina['rutina'];
+
+            //OBTENER EL USUARIO CON LOS DATOS ENVIADOS
+            $entityManager = $doctrine->getManager();
+            $usuario = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username' => $infoRutina['user']));
+            $idUsuario = $usuario->getId();
+
+            if (isset($idUsuario)) {
+                //CREAR UNA NUEVA RUTINA E INSERTAR LOS DATOS EN LA BDD
+                $nuevaRutina = new Rutinas();
+                $nuevaRutina->setIdUsuario($idUsuario);
+                $nuevaRutina->setNombre($nombreRutina);
+
+                //ACTUALIZAMOS LA BASE DE DATOS
+                // $entityManager->persist($nuevaRutina);
+                // $entityManager->flush();
+            }
+
+
+            return new Response(json_encode($nuevaRutina->getIdUsuario()));
+        }
     }
 }

@@ -22,8 +22,8 @@ class Rutinas
     #[ORM\JoinColumn(nullable: false)]
     private ?Usuarios $id_usuario = null;
 
-    #[ORM\ManyToMany(targetEntity: Ejercicios::class, inversedBy: 'id_rutina')]
-    private Collection $id_ejercicio;
+    // #[ORM\ManyToMany(targetEntity: Ejercicios::class, inversedBy: 'id_rutina')]
+    // private Collection $id_ejercicio;
 
     // #[ORM\Column]
     // private ?int $rondas = null;
@@ -34,10 +34,10 @@ class Rutinas
     // #[ORM\Column(length: 255)]
     // private ?string $tiempo = null;
 
-    public function __construct()
-    {
-        $this->id_ejercicio = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->id_ejercicio = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -68,29 +68,29 @@ class Rutinas
         return $this;
     }
 
-    /**
-     * @return Collection<int, Ejercicios>
-     */
-    public function getIdEjercicio(): Collection
-    {
-        return $this->id_ejercicio;
-    }
+    // /**
+    //  * @return Collection<int, Ejercicios>
+    //  */
+    // public function getIdEjercicio(): Collection
+    // {
+    //     return $this->id_ejercicio;
+    // }
 
-    public function addIdEjercicio(Ejercicios $idEjercicio): self
-    {
-        if (!$this->id_ejercicio->contains($idEjercicio)) {
-            $this->id_ejercicio->add($idEjercicio);
-        }
+    // public function addIdEjercicio(Ejercicios $idEjercicio): self
+    // {
+    //     if (!$this->id_ejercicio->contains($idEjercicio)) {
+    //         $this->id_ejercicio->add($idEjercicio);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeIdEjercicio(Ejercicios $idEjercicio): self
-    {
-        $this->id_ejercicio->removeElement($idEjercicio);
+    // public function removeIdEjercicio(Ejercicios $idEjercicio): self
+    // {
+    //     $this->id_ejercicio->removeElement($idEjercicio);
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     // public function getRondas(): ?int
     // {
