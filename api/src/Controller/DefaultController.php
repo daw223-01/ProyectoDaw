@@ -257,12 +257,12 @@ class DefaultController extends AbstractController
             if (isset($idUsuario)) {
                 //CREAR UNA NUEVA RUTINA E INSERTAR LOS DATOS EN LA BDD
                 $nuevaRutina = new Rutinas();
-                $nuevaRutina->setIdUsuario($idUsuario);
+                $nuevaRutina->setIdUsuario($usuario);
                 $nuevaRutina->setNombre($nombreRutina);
 
                 //ACTUALIZAMOS LA BASE DE DATOS
-                // $entityManager->persist($nuevaRutina);
-                // $entityManager->flush();
+                $entityManager->persist($nuevaRutina);
+                $entityManager->flush();
             }
 
 

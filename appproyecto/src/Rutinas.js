@@ -12,32 +12,67 @@ let rutaDes = "http://localhost/api";
 
 export default class Rutinas extends React.Component {
 
-    // //FUNCION QUE EJECUTA OBTENER DATOS
-    // async obtenerRutinas() {
-    //     try {
-    //         let consulta = await getRutinas();
+    constructor() {
+        super();
+        this.state = {
+            rutinas: ""
+        }
+    }
 
-    //         console.log(consulta);
-    //     } catch (error) {
+    //FUNCION QUE EJECUTA OBTENER DATOS
+    async obtenerRutinas() {
+        let listado = [];
 
-    //     }
-    // }
+        let consulta = await getRutinas();
+        for (let i = 0; i < consulta.length; i++) {
+            const element = consulta[i];
 
-    // //SE EJECUTA LA FUNCION AL RENDERIZAR EL COMPONENTE
-    // componentDidMount() {
-    //     this.obtenerRutinas();
-    // }
+            listado.push(element);
+        }
+
+        this.setState({
+            rutinas: listado
+        });
+
+    }
+
+    //SE EJECUTA LA FUNCION AL RENDERIZAR EL COMPONENTE
+    componentDidMount() {
+        this.obtenerRutinas();
+    }
 
     render() {
+
+        //COMO EL RESULTADO ES UN OBJETO CON OBJETOS, SE DEBE ITERAR DE ESTA FORMA
+        let rutinas = Object.keys(this.state.rutinas).map((rutina, index) => (
+            <div className="row">
+                <div className="card col-4">
+                    {console.log(this.state.rutinas[rutina])}
+                    <div className="card-body">
+                        <h2 className="card-title">
+                            {this.state.rutinas[rutina]}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        ));
+
+
         return (
 
             <div id="rutinas">
+                {/* MODAL PARA AÑADIR NUEVAS RUTINAS */}
+                <NuevaRutina></NuevaRutina>
                 <div className="navbar">
                     <div className="container-fluid">
                         <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rutinaModal">Nueva rutina</button>
                     </div>
                 </div>
-                <NuevaRutina></NuevaRutina>
+
+                {/* RUTINAS DEL USUARIO */}
+                <div className="container-fluid gap-3">
+                    {rutinas}
+                </div>
             </div>
         )
     }
@@ -46,6 +81,8 @@ export default class Rutinas extends React.Component {
 
 
 /**FUNCIONES Y COMPONENTES EXTRA**/
+
+//FUNCION PARA OBTENER LAS RUTINAS Y MOSTRARLAS POR PANTALLA
 async function getRutinas() {
     let username = sessionStorage.getItem("username");
 
@@ -65,13 +102,14 @@ async function getRutinas() {
 }
 
 
+//COMPONENTE QUE GENERA UN MODAL PARA AÑADIR RUTINAS
 class NuevaRutina extends React.Component {
 
     //FUNCION AL AÑADIR RUTINA
     async newRutina() {
         try {
             let consulta = await this.setRutina();
-            console.log(consulta);
+            window.location.reload();
         } catch (error) {
 
         }
@@ -96,9 +134,9 @@ class NuevaRutina extends React.Component {
         }
 
         let consulta = await fetch(rutaDes + "/setrutinas", options);
-        
+
         if (consulta.ok) {
-            return(consulta.json());
+            return (consulta.json());
         }
     }
 

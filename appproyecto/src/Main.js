@@ -68,7 +68,7 @@ export default class Main extends React.Component {
                     </header>
                 </div>
 
-                <div className="row">
+                <div className="row h-100">
                     <div id="sidebar" className="col-2">
                         <div className="row">
                             <div className="col-12">
@@ -86,7 +86,7 @@ export default class Main extends React.Component {
                         </div>
                     </div>
 
-                    <div id="content" className="col-10 h-100">
+                    <div id="content" className="col-10">
                         Bienvenido, {this.state.usuario}
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router}></RouterProvider>
