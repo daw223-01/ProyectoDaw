@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use App\Entity\Ejercicios;
 use App\Entity\Rutinas;
+use App\Entity\RutinasEjercicios;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -267,6 +268,64 @@ class DefaultController extends AbstractController
 
 
             return new Response(json_encode($nuevaRutina->getIdUsuario()));
+        }
+    }
+
+    /**
+     * @Route("/setEjercicioRutina", name="setEjercicioRutina")
+     */
+    public function setEjercicioRutina(ManagerRegistry $doctrine){
+
+        if (isset($_REQUEST)) {
+            //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
+            $data = file_get_contents('php://input');
+
+            //DECODIFICAR LOS DATOS Y GUARDARLOS EN UN ARRAY
+            $infoRutina = json_decode($data, true);
+
+            //OBTENER LOS DATOS PASADOS
+            $username = $infoRutina['username'];
+            $ejercicioName = $infoRutina['ejercicio'];
+            $rutinaName = $infoRutina['rutina'];
+            $rondas = $infoRutina['rondas'];
+            if ($rondas == "") {
+                $rondas = 0;
+            }
+            $repes = $infoRutina['repeticiones'];
+            if ($repes == "") {
+                $repes = 0;
+            }
+            $tiempo = $infoRutina['tiempo'];
+            if ($tiempo == "") {
+                $tiempo = 0;
+            }
+
+
+            //OBTENER EL USUARIO, EL EJERCICIO Y LA RUTINA DE LA BASE DE DATOS
+            $entityManager = $doctrine->getManager();
+
+            $usuario = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username'=>$username));
+            
+            $rutina = $doctrine->getRepository(Rutinas::class)->findOneBy(array('id_usuario'=>$usuario, 'nombre'=>$rutinaName));
+
+            $ejercicio = $doctrine->getRepository(Ejercicios::class)->findOneBy(array('nombre'=>$ejercicioName));
+
+            //CREAR UN NUEVO OBJETO RUTINAS/EJERCICIO
+            $rutinaEjercicio = new RutinasEjercicios();
+            $rutinaEjercicio->setIdRutina($rutina);
+            $rutinaEjercicio->setIdEjercicio($ejercicio);
+            $rutinaEjercicio->setRepeticiones($repes);
+            $rutinaEjercicio->setRondas($rondas);
+            $rutinaEjercicio->setTiempo($tiempo);
+
+            //ACTUALIZAR Y AÑADIR A LA BASE DE DATOS
+            $entityManager->persist($rutinaEjercicio);
+            $entityManager->flush();
+
+
+
+            return new Response(json_encode($rondas.' '.$repes.' '.$tiempo));
+
         }
     }
 }

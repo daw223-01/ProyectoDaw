@@ -36,6 +36,12 @@ export default class Modal extends React.Component {
         });
     }
 
+    //FUNCION PARA AÑADIR EJERCICIOS A LA RUTINA
+    async addRutinasEjercicios(){
+        let consulta = await rutinasEjercicios();
+        console.log(consulta);
+    }
+
     //EJECUTAR FUNCIONES AL INCIIAR COMPONENTE
     componentDidMount(){
         this.getRutinas();
@@ -80,7 +86,7 @@ export default class Modal extends React.Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Añadir a rutina</button>
+                            <button type="button" class="btn btn-primary" onClick={this.addRutinasEjercicios.bind(this)}>Añadir a rutina</button>
                         </div>
 
                     </div>
@@ -92,7 +98,7 @@ export default class Modal extends React.Component {
 
 /*****FUNCIONES EXTRA******/
 
-//FUNCION PARA OBTENER RUTINAS EXISTENTES
+//FUNCION PARA OBTENER RUTINAS EXISTENTES Y MOSTRARLAS EN LOS MODALES
 async function obtenerRutinas() {
     let usuario = sessionStorage.getItem("username");
     let options = {
@@ -105,6 +111,41 @@ async function obtenerRutinas() {
     }
 
     let consulta = await fetch(rutaDes + "/getrutinas", options);
+
+    if (consulta.ok) {
+        return consulta.json();
+    }
+}
+
+
+//FUNCION PARA AÑADIR LOS EJERCICIOS A LAS RUTINAS
+async function rutinasEjercicios(){
+    let usuario = sessionStorage.getItem("username");
+    let nombreEjercicio = document.querySelector("h3").textContent;
+    let selectRutina = document.querySelector("form select").value;
+    let inputRondas = document.querySelectorAll("form input")[0].value;
+    let inputTiempo = document.querySelectorAll("form input")[1].value;
+    let inputRepeticiones = document.querySelectorAll("form input")[2].value;
+
+    let datos = {
+        username: usuario,
+        ejercicio: nombreEjercicio,
+        rutina: selectRutina,
+        rondas: inputRondas,
+        repeticiones: inputRepeticiones,
+        tiempo: inputTiempo
+    }
+
+    let options = {
+        method: "POST",
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    };
+
+    let consulta = await fetch(rutaDes+"/setEjercicioRutina", options);
 
     if (consulta.ok) {
         return consulta.json();
