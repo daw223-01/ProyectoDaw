@@ -14,6 +14,10 @@
 header {
     background-color: rgb(219, 103, 103);
 }
+.contenedorNombres{
+    overflow-y: auto;
+    height: 20%;
+}
 
 #sidebar {
     background-color: rgb(219, 103, 103);

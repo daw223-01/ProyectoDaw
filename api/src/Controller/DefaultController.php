@@ -185,13 +185,6 @@ class DefaultController extends AbstractController
                     'urlVideo' => $ejercicio->getUrlVideo(),
                     'urlImg' => $ejercicio->getUrlImg()
                 ];
-                // $datos = [
-                //     $ejercicio->getNombre(),
-                //     $ejercicio->getGrupoMuscular(),
-                //     $ejercicio->getDescripcion(),
-                //     $ejercicio->getUrlVideo(),
-                //     $ejercicio->getUrlImg()
-                // ];
                 array_push($listaEjercicios, $datos);
             }
 

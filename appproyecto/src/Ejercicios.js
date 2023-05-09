@@ -26,8 +26,8 @@ export default class Ejercicios extends React.Component {
     async renderEjercicios() {
         let listado = [];
         let consulta = await getEjercicios();
-        //SE EMPIEZA POR EL 1 PARA EVITAR COGER LA CABECERA
-        for (let i = 1; i < consulta.length; i++) {
+        
+        for (let i = 0; i < consulta.length; i++) {
             let datos = consulta[i];
 
             let datosEjercicio = {
