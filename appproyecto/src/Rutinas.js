@@ -15,7 +15,8 @@ export default class Rutinas extends React.Component {
     constructor() {
         super();
         this.state = {
-            rutinas: ""
+            rutinas: "",
+            ejerciciosRutinas: ""
         }
     }
 
@@ -38,13 +39,21 @@ export default class Rutinas extends React.Component {
 
     //FUNCION PARA OBTENER DATOS DE RUTINA
     async obtenerDatosRutina(element) {
+        let listado = [];
+
         let nomRut = element.target.textContent;
         console.log(nomRut);
 
         let consulta = await getEjerciciosRutinas(nomRut);
 
         consulta.forEach(datosRutina => {
-            console.log(datosRutina);
+            listado.push(datosRutina);
+        });
+
+        this.setState({
+            ejerciciosRutinas: listado
+        }, () => {
+
         });
     }
 
@@ -59,7 +68,7 @@ export default class Rutinas extends React.Component {
         let rutinas = Object.keys(this.state.rutinas).map((rutina, index) => (
             <div className="card col-sm-12 col-m-5 col-lg-3 m-2">
                 <div className="card-body">
-                    <h2 className="card-title" onClick={this.obtenerDatosRutina.bind(this)} >
+                    <h2 className="card-title" onClick={this.obtenerDatosRutina.bind(this)} data-bs-toggle="modal" data-bs-target="#ejRutModal">
                         {this.state.rutinas[rutina]}
                     </h2>
                 </div>
@@ -80,7 +89,7 @@ export default class Rutinas extends React.Component {
 
                 {/* RUTINAS DEL USUARIO */}
                 <div className="container-fluid">
-                    <DatosRutina></DatosRutina>
+                    <DatosRutina datosRutina={this.state.ejerciciosRutinas}></DatosRutina>
                     <div className="row">
                         {rutinas}
                     </div>
@@ -206,21 +215,37 @@ class NuevaRutina extends React.Component {
 
 //COMPONENTE QUE GENERA UN MODAL PARA VER LOS DETALLES DE LA RUTINA
 class DatosRutina extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
+        let datosRutina = this.props.datosRutina;
+        console.log(datosRutina);
+        let lista = Object.keys(datosRutina).map(element => (
+            <div className="row">
+                <div className="col-3">{datosRutina[element].nomEjercicio}</div>
+                <div className="col-3">{datosRutina[element].rondas}</div>
+                <div className="col-3">{datosRutina[element].repeticiones}</div>
+                <div className="col-3">{datosRutina[element].tiempo}</div>
+            </div>
+        ))
         return (
-            <div id="rutinaModal" className="modal fade">
+            <div id="ejRutModal" className="modal fade">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h3 className="modal-title">Nueva rutina</h3>
                             <button className="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div className="modal-body">
                             <form className="container-fluid">
                                 <div className="row">
-                                    <input id="nombreRutina" type="text" className="form-control col-4" placeholder="Nombre de la rutina"></input>
+                                    <div className="col-3">Nombre del Ejercicio</div>
+                                    <div className="col-3">Rondas</div>
+                                    <div className="col-3">Repeticiones/Ronda</div>
+                                    <div className="col-3">Tiempo</div>
                                 </div>
+                                {lista}
                             </form>
                         </div>
                         <div className="modal-footer">

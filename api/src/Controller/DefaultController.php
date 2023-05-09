@@ -348,7 +348,7 @@ class DefaultController extends AbstractController
                 array_push($listaEjercicios,
                 [
                     'nomEjercicio'=>$doctrine->getRepository(Ejercicios::class)->findOneBy(array('id'=>$ejercicio->getIdEjercicio()))->getNombre(),
-                    'rodas'=>$ejercicio->getRondas(),
+                    'rondas'=>$ejercicio->getRondas(),
                     'tiempo'=>$ejercicio->getTiempo(),
                     'repeticiones'=>$ejercicio->getRepeticiones()
                 ]);
