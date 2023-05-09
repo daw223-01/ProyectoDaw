@@ -315,10 +315,47 @@ class DefaultController extends AbstractController
             $entityManager->persist($rutinaEjercicio);
             $entityManager->flush();
 
-
-
             return new Response(json_encode($rondas.' '.$repes.' '.$tiempo));
 
         }
     }
+
+    /**
+     * @Route("/getEjercicioRutina", name="getEjercicioRutina")
+     */
+    public function getEjercicioRutina(ManagerRegistry $doctrine){
+        if (isset($_REQUEST)) {
+            //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
+            $data = file_get_contents('php://input');
+
+            //DECODIFICAR LOS DATOS Y GUARDARLOS EN UN ARRAY
+            $infoRutina = json_decode($data, true);
+
+            //DATOS POR SEPARADO
+            $username = $infoRutina['username'];
+            $nomRut = $infoRutina['nomRut'];
+
+            //BUSCAR LA RUTINA QUE SE LLAME IGUAL, PARA EL USUARIO ACTUAL
+            $userId = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username'=>$username))->getId();
+            $rutinaId = $doctrine->getRepository(Rutinas::class)->findOneBy(array('id_usuario'=>$userId, 'nombre'=>$nomRut))->getId();
+
+            //BUSCAR EN LA TABLA EJERCICIORUTINA
+            $ejRut = $doctrine->getRepository(RutinasEjercicios::class)->findBy(array("id_rutina"=>$rutinaId));
+
+            $listaEjercicios = [];
+
+            foreach ($ejRut as $ejercicio) {
+                array_push($listaEjercicios,
+                [
+                    'nomEjercicio'=>$doctrine->getRepository(Ejercicios::class)->findOneBy(array('id'=>$ejercicio->getIdEjercicio()))->getNombre(),
+                    'rodas'=>$ejercicio->getRondas(),
+                    'tiempo'=>$ejercicio->getTiempo(),
+                    'repeticiones'=>$ejercicio->getRepeticiones()
+                ]);
+            }
+
+            return new Response(json_encode($listaEjercicios));
+        }
+    }
+
 }

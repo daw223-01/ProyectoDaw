@@ -1,0 +1,21 @@
+.ejercicio {
+    background-color: antiquewhite;
+    border-radius: 1em;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1, 1fr;
+    padding: 2%;
+    gap: 2%;
+}
+
+.ejercicio>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+}
+
+.ejercicio>p {
+    overflow: hidden;
+}

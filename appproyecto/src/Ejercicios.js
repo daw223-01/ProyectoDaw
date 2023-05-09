@@ -2,6 +2,7 @@ import { element } from "prop-types";
 import React from "react";
 import './Ejercicios.css';
 import Modal from "./Modal";
+import CardEjercicio from "./CardEjercicio";
 
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
@@ -72,7 +73,7 @@ export default class Ejercicios extends React.Component {
             datosEj: datos,
             carga: true
         }, () => {
-            console.log(this.state.carga);
+            
         });
 
     }
@@ -83,14 +84,14 @@ export default class Ejercicios extends React.Component {
         //COMO EL RESULTADO ES UN OBJETO CON OBJETOS, SE DEBE ITERAR DE ESTA FORMA
         let lista = Object.keys(this.state.ej).map((element, i) => (
 
-            <Ejercicio
+            <CardEjercicio
                 src={this.state.ej[element].img}
                 titulo={this.state.ej[element].nombre}
                 desc={this.state.ej[element].descripcion}
                 musc={this.state.ej[element].grupoMuscular}
                 video={this.state.ej[element].video}
                 datosEj={this.datosEjercicio.bind(this)}
-            ></Ejercicio>
+            ></CardEjercicio>
         ));
 
         return (
@@ -120,32 +121,5 @@ async function getEjercicios() {
     }
 }
 
-class Ejercicio extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
-    //AÑADIR DATOS PARA MANDARLOS DE VUELTA
-    añadirDatos() {
-        let datos = {
-            titulo: this.props.titulo,
-            video: this.props.video,
-            descripcion: this.props.desc,
-            display: true
-        }
-
-        this.props.datosEj(datos);
-    }
-
-    render() {
-
-        return (
-            <div className="ejercicio" data-bs-toggle="modal" data-bs-target="#ventanaModal" onClick={this.añadirDatos.bind(this)}>
-                <img src={this.props.src} alt="No img"></img>
-                <h3>{this.props.titulo}</h3>
-                <p>{this.props.desc}</p>
-            </div>
-        )
-    }
-}
 

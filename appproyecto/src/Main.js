@@ -101,13 +101,15 @@ export default class Main extends React.Component {
     render() {
         let lista = [];
         let nombresEj = [];
-        lista = this.state.lista;
+        if (this.state.active) {
+            lista = this.state.lista;
 
-        nombresEj = lista.map(ej =>
-            <label className="form-control">
-                {ej}
-            </label>
-        );
+            nombresEj = lista.map(ej =>
+                <label className="form-control">
+                    {ej}
+                </label>
+            );
+        }
 
         return (
             <div id="main" className="container-fluid min-vh-100 d-flex flex-column justify-content-between">
