@@ -39,7 +39,7 @@ export default class Main extends React.Component {
     constructor() {
         super();
         this.state = {
-            usuario: sessionStorage.getItem("username")
+            usuario: localStorage.getItem("username")
         }
     }
 
@@ -52,15 +52,14 @@ export default class Main extends React.Component {
 
     //FUNCION QUE CIERRA LA SESION
     cerrarSesion() {
-        sessionStorage.removeItem("username");
-        sessionStorage.removeItem("mail");
-        sessionStorage.removeItem("password");
+        localStorage.removeItem("username");
+        localStorage.removeItem("mail");
         window.location.reload();
     }
 
     render() {
         return (
-            <div id="main" className="container-fluid min-vh-100">
+            <div id="main" className="container-fluid min-vh-100 d-flex flex-column justify-content-between">
                 <div className="row">
                     <header className="col-12" onClick={this.changeWidth.bind(this)}>
                         <p>Cabecera</p>
@@ -68,7 +67,7 @@ export default class Main extends React.Component {
                     </header>
                 </div>
 
-                <div className="row h-100">
+                <div className="row flex-fill">
                     <div id="sidebar" className="col-2">
                         <div className="row">
                             <div className="col-12">

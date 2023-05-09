@@ -51,18 +51,9 @@ export default class App extends React.Component {
         //LA FUNCION DEVOLVERÁ TRUE O FALSE.
         //EN FUNCIÓN DE LO QUE DEVUELVA, EJECUTA UNA FUNCIÓN U OTRA
         if (boolean === true) {
-          if (tipoFormulario.className === "registro login") {
-            //SE INICIA LA SESION            
-            sessionStorage.setItem("username", datos.username);
-            sessionStorage.setItem("mail", datos.correo);
-            window.location.reload();
-
-          } else if (tipoFormulario.className === "registro signup") {
-            //SE INICIA LA SESION
-            sessionStorage.setItem("username", datos.username);
-            sessionStorage.setItem("mail", datos.correo);
-            window.location.reload();
-          }
+          localStorage.setItem("username", datos.username);
+          localStorage.setItem("mail", datos.correo);
+          window.location.reload();
         } else {
           alert(datos);
         }

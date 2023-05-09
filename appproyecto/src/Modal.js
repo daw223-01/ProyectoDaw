@@ -100,7 +100,7 @@ export default class Modal extends React.Component {
 
 //FUNCION PARA OBTENER RUTINAS EXISTENTES Y MOSTRARLAS EN LOS MODALES
 async function obtenerRutinas() {
-    let usuario = sessionStorage.getItem("username");
+    let usuario = localStorage.getItem("username");
     let options = {
         method: "POST",
         headers: {
@@ -120,7 +120,7 @@ async function obtenerRutinas() {
 
 //FUNCION PARA AÑADIR LOS EJERCICIOS A LAS RUTINAS
 async function rutinasEjercicios(){
-    let usuario = sessionStorage.getItem("username");
+    let usuario = localStorage.getItem("username");
     let nombreEjercicio = document.querySelector("h3").textContent;
     let selectRutina = document.querySelector("form select").value;
     let inputRondas = document.querySelectorAll("form input")[0].value;

@@ -19,7 +19,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 //EN FUNCION DE SI SE HA INICIADO SESION YA O NO, SE RENDERIZA LA PAGINA DE LOGIN
 //O DIRECTAMENTE LA PÁGINA PRINCIPAL DE LA APLICACION
-if (!sessionStorage.getItem('username') && !sessionStorage.getItem('mail')) {
+if (!localStorage.getItem('username') && !localStorage.getItem('mail')) {
   root.render(
     //RENDERIZADO LOGIN
     <App></App>

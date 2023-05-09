@@ -45,14 +45,12 @@ export default class Rutinas extends React.Component {
 
         //COMO EL RESULTADO ES UN OBJETO CON OBJETOS, SE DEBE ITERAR DE ESTA FORMA
         let rutinas = Object.keys(this.state.rutinas).map((rutina, index) => (
-            <div className="row">
-                <div className="card col-4">
-                    {console.log(this.state.rutinas[rutina])}
-                    <div className="card-body">
-                        <h2 className="card-title">
-                            {this.state.rutinas[rutina]}
-                        </h2>
-                    </div>
+            <div className="card col-sm-6 col-lg-4 m-2">
+                {console.log(this.state.rutinas[rutina])}
+                <div className="card-body">
+                    <h2 className="card-title">
+                        {this.state.rutinas[rutina]}
+                    </h2>
                 </div>
             </div>
         ));
@@ -60,7 +58,7 @@ export default class Rutinas extends React.Component {
 
         return (
 
-            <div id="rutinas">
+            <div id="rutinas" className="d-flex flex-column p-2">
                 {/* MODAL PARA AÑADIR NUEVAS RUTINAS */}
                 <NuevaRutina></NuevaRutina>
                 <div className="navbar">
@@ -70,8 +68,10 @@ export default class Rutinas extends React.Component {
                 </div>
 
                 {/* RUTINAS DEL USUARIO */}
-                <div className="container-fluid gap-3">
-                    {rutinas}
+                <div className="container-fluid">
+                    <div className="row">
+                        {rutinas}
+                    </div>
                 </div>
             </div>
         )
@@ -84,7 +84,7 @@ export default class Rutinas extends React.Component {
 
 //FUNCION PARA OBTENER LAS RUTINAS Y MOSTRARLAS POR PANTALLA
 async function getRutinas() {
-    let username = sessionStorage.getItem("username");
+    let username = localStorage.getItem("username");
 
     let options = {
         method: "POST",
@@ -115,7 +115,7 @@ class NuevaRutina extends React.Component {
         }
     }
     async setRutina() {
-        let username = sessionStorage.getItem("username");
+        let username = localStorage.getItem("username");
         let nombreRutina = document.querySelector("#nombreRutina").value;
 
         let body = {

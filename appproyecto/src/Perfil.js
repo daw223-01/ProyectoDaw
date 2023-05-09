@@ -71,7 +71,7 @@ export default class Perfil extends React.Component {
             alert(consulta);
 
             //CERRAR TODAS LAS SESIONES
-            sessionStorage.clear();
+            localStorage.clear();
 
         } catch (error) {
             alert(error);
@@ -137,8 +137,8 @@ export default class Perfil extends React.Component {
 async function getInfo() {
 
     let usuario = {
-        email: sessionStorage.getItem("mail"),
-        password: sessionStorage.getItem("password")
+        email: localStorage.getItem("mail"),
+        password: localStorage.getItem("password")
     }
 
     let options = {
@@ -177,7 +177,7 @@ async function actualizarInfo(numeroDatos, informacion) {
         case 2:
 
             usuario = {
-                username: sessionStorage.getItem('username'),
+                username: localStorage.getItem('username'),
                 contraseña: informacion[0].value
             }
             break;
