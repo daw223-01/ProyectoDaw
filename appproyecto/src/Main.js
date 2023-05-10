@@ -5,6 +5,7 @@ import Ejercicios from "./Ejercicios";
 import Perfil from "./Perfil";
 import { Link, RouterProvider, createBrowserRouter, BrowserRouter, Route } from 'react-router-dom'
 import Rutinas from "./Rutinas";
+import ModalInput from "./ModalInput";
 
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
@@ -41,7 +42,8 @@ export default class Main extends React.Component {
         this.state = {
             ejercicios: "",
             lista: "",
-            active: false
+            active: false,
+            datosEj: ""
         }
     }
 
@@ -73,40 +75,65 @@ export default class Main extends React.Component {
     ejerciciosInput(input) {
         let contenidoInp = input.target.value;
         let listaEj = this.state.ejercicios;
-        let listaNombres = [];
+        let liEj = [];
 
         if (contenidoInp != "" && contenidoInp != " ") {
             for (const key in listaEj) {
                 let ej = listaEj[key];
                 //SI EL NOMBRE BUSCADO COINCIDE CON: NOMBRE , DESCRIPCION Y/O GRUPO MUSCULAR  DEL EJERCICIO
                 if (ej.nombre.toUpperCase().includes(contenidoInp.toUpperCase()) || ej.grupoMuscular.toUpperCase().includes(contenidoInp.toUpperCase()) || ej.descripcion.toUpperCase().includes(contenidoInp.toUpperCase())) {
-                    listaNombres.push(ej.nombre);
+                    liEj.push(ej);
                 }
             }
         }
 
         this.setState({
             active: true,
-            lista: listaNombres
+            lista: liEj
         });
 
+    }
+
+    //FUNCION AL HACER CLICK EN LOS EJERCICIOS MOSTRADOS
+    verEjercicio(ejercicio) {
+
+        let datosEjercicio = {
+            nombre: ejercicio.nombre,
+            grupoMuscular: ejercicio.grupoMuscular,
+            descripcion: ejercicio.descripcion,
+            video: ejercicio.urlVideo,
+            img: ejercicio.urlImg
+        }
+
+        //CREAR UN ESTADO PARA MANDARLO COMO PROP AL COMPONENTE MODAL
+        this.setState({
+            datosEj: datosEjercicio
+        }, () => {
+
+        });
     }
 
     //FUNCIONES A EJECUTAR AL RENDERIZAR COMPONENTE
     componentDidMount() {
         this.buscarEjercicios();
+        this.setState({
+            showModal: true
+        });
     }
 
 
     render() {
+        //CREAR UN ARRAY CON LOS NOMBRES DE LOS EJERCICIOS PARA MOSTRARLOS EN 
+        //LA BARRA DE BUSQUEDA DE LA CABECERA
         let lista = [];
         let nombresEj = [];
         if (this.state.active) {
             lista = this.state.lista;
 
+            //AL HACER CLICK EN UN RESULTADO, SE MUESTRAN LOS DATOS DE ESE EJERCICIO
             nombresEj = lista.map(ej =>
-                <label className="form-control">
-                    {ej}
+                <label className="form-control resultBusqueda" onClick={() => this.verEjercicio(ej)} data-bs-toggle="modal" data-bs-target="#ventanaModalInput" >
+                    {ej.nombre}
                 </label>
             );
         }
@@ -114,7 +141,7 @@ export default class Main extends React.Component {
         return (
             <div id="main" className="container-fluid min-vh-100 d-flex flex-column justify-content-between">
                 <div className="row">
-                    <header className="p-3 container-fluid text-center">
+                    <header className="p-3 container-fluid text-start">
                         <div className="row justify-content-between align-items-center w-100">
                             <div className="col-1">
                                 <img alt="LOGO">
@@ -123,6 +150,7 @@ export default class Main extends React.Component {
 
                             <div className="col-4">
                                 <div className="input-group">
+
                                     <input type="text" className="form-control" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
                                     </input>
 
@@ -165,6 +193,9 @@ export default class Main extends React.Component {
                     </div>
 
                     <div id="content" className="col-11">
+                        {/* MODAL EJERCICIO AL HACER CLICK EN LOS RESULTADOS DEL BUSCADOR*/}
+                        <ModalInput datos={this.state.datosEj}></ModalInput>
+
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router}></RouterProvider>
                     </div>
@@ -196,3 +227,5 @@ async function getEjercicios() {
         return consulta.json();
     }
 }
+
+//COMPONENTE MODAL PARA LA BARRA DE BUSQUEDA

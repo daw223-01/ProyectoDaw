@@ -18,6 +18,9 @@ header {
     overflow-y: auto;
     height: 20%;
 }
+.resultBusqueda{
+    cursor: pointer;
+}
 
 #sidebar {
     background-color: rgb(219, 103, 103);
