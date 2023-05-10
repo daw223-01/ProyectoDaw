@@ -184,10 +184,10 @@ export default class Main extends React.Component {
                                 <a href="/ejercicios">Ejercicios</a>
                             </div>
                             <div className="col-12">
-                                <a href="/perfil">Perfil</a>
+                                <a href="/rutinas">Rutinas</a>
                             </div>
                             <div className="col-12">
-                                <a href="/rutinas">Rutinas</a>
+                                <a href="/perfil">Perfil</a>
                             </div>
                         </div>
                     </div>

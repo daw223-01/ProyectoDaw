@@ -16,7 +16,8 @@ export default class Rutinas extends React.Component {
         super();
         this.state = {
             rutinas: "",
-            ejerciciosRutinas: ""
+            ejerciciosRutinas: "",
+            tituloRutina: ""
         }
     }
 
@@ -51,7 +52,8 @@ export default class Rutinas extends React.Component {
         });
 
         this.setState({
-            ejerciciosRutinas: listado
+            ejerciciosRutinas: listado,
+            tituloRutina: element.target.textContent
         }, () => {
 
         });
@@ -89,7 +91,7 @@ export default class Rutinas extends React.Component {
 
                 {/* RUTINAS DEL USUARIO */}
                 <div className="container-fluid">
-                    <DatosRutina datosRutina={this.state.ejerciciosRutinas}></DatosRutina>
+                    <DatosRutina datosRutina={this.state.ejerciciosRutinas} tituloRutina={this.state.tituloRutina}></DatosRutina>
                     <div className="row">
                         {rutinas}
                     </div>
@@ -219,39 +221,105 @@ class DatosRutina extends React.Component {
         super(props);
     }
 
-    render() {
+    //FUNCION ELIMINAR RUTINA
+    async deleteRutina() {
+        let nombreRutina = document.querySelector("#ejRutModal h2").textContent;
+        let username = localStorage.getItem("username");
+
+        let respuesta = await this.findRutinaDelete(nombreRutina, username);
+        window.location.reload();
+    }
+    async findRutinaDelete(rutina, user) {
+        let options = {
+            method: "POST",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: user,
+                rutinaName: rutina
+            })
+        }
+        let consulta = await fetch(rutaDes + "/deleteRutina", options);
+
+        if (consulta.ok) {
+            return consulta.json();
+        }
+    }
+
+    //FUNCION BORRAR EJERCICIO DE RUTINA
+    async deleteEjRutina() {
+        let nombreRutina = document.querySelector("#ejRutModal h2").textContent;
+        let username = localStorage.getItem("username");
+        let ejercicio = document.querySelectorAll(".infoRutinaEj > div")[0].textContent;
+
+        let respuesta = await this.findEj(nombreRutina, username, ejercicio);
+        
+    }
+    async findEj(rutina, user, ej) {
+        let options = {
+            method: "POST",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: user,
+                rutinaName: rutina,
+                ejercicio: ej
+            })
+        }
+        let consulta = await fetch(rutaDes + "/deleteEjRutina", options);
+
+        if (consulta.ok) {
+            return consulta.json();
+
+        }
+    }
+
+    //FUNCION AL INICIAR EL COMPONENTE
+    componentDidMount() {
         let datosRutina = this.props.datosRutina;
-        console.log(datosRutina);
+
         let lista = Object.keys(datosRutina).map(element => (
-            <div className="row">
-                <div className="col-3">{datosRutina[element].nomEjercicio}</div>
-                <div className="col-3">{datosRutina[element].rondas}</div>
+            <div className="row justify-content-center infoRutinaEj">
+                <div className="col-4">{datosRutina[element].nomEjercicio}</div>
+                <div className="col-1">{datosRutina[element].rondas}</div>
                 <div className="col-3">{datosRutina[element].repeticiones}</div>
-                <div className="col-3">{datosRutina[element].tiempo}</div>
+                <div className="col-2">{datosRutina[element].tiempo}</div>
+                <button type="button" class="btn btn-outline-danger col-2" onClick={this.deleteEjRutina.bind(this)}>Eliminar</button>
             </div>
-        ))
+        ));
+
+        return lista;
+    }
+
+    render() {
+
         return (
             <div id="ejRutModal" className="modal fade">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
+                            <h2>{this.props.tituloRutina}</h2>
                             <button className="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div className="modal-body">
                             <form className="container-fluid">
                                 <div className="row">
-                                    <div className="col-3">Nombre del Ejercicio</div>
-                                    <div className="col-3">Rondas</div>
+                                    <div className="col-4">Nombre del Ejercicio</div>
+                                    <div className="col-1">Rondas</div>
                                     <div className="col-3">Repeticiones/Ronda</div>
-                                    <div className="col-3">Tiempo</div>
+                                    <div className="col-2">Tiempo</div>
                                 </div>
-                                {lista}
+                                {this.componentDidMount()}
                             </form>
                         </div>
                         <div className="modal-footer">
+                            <button type="button" class="btn btn-outline-danger col-2" onClick={this.deleteRutina.bind(this)}>Eliminar rutina</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
-
                     </div>
                 </div>
             </div>
