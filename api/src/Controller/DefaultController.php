@@ -44,6 +44,21 @@ class DefaultController extends AbstractController
             $repositorio = $doctrine->getRepository(Usuarios::class);
 
             switch (count($infousuario)) {
+                case 1:
+                    $email = $infousuario['email'];
+
+                    $usuario = $repositorio->findOneBy(array('email' => $email));
+
+                    $datosUsuario = [
+                        'username' => $usuario->getUsername(),
+                        'correo' => $usuario->getEmail(),
+                        'nombre' => $usuario->getNombre(),
+                        'apellidos' => $usuario->getApellidos(),
+                        'contraseña' => $usuario->getContraseña()
+                    ];
+                    $respuesta = [true, $datosUsuario];
+                break;
+
                 case 2:
                     $email = $infousuario['email'];
                     $password = $infousuario['password'];
@@ -158,7 +173,7 @@ class DefaultController extends AbstractController
             $entityManager->flush();
             $respuesta = "Datos actaulizados. Es necesario volver a iniciar sesion";
 
-            return new Response(json_encode($respuesta));
+            return new Response(json_encode($usuario->getNombre()));
         }
     }
 
@@ -431,5 +446,3 @@ class DefaultController extends AbstractController
         return new Response(json_encode($ejRut));
     }
 }
-
-?>

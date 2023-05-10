@@ -1,5 +1,5 @@
 import React from "react";
-import './Perfil.css';
+// import './Perfil.css';
 
 
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
@@ -26,22 +26,18 @@ export default class Perfil extends React.Component {
     //FUNCION PARA OBTENER LOS DATOS DEL USUARIO
     async datosUsuario() {
 
-        try {
-            //AL HACER LA CONSULTA A LA API, SE DEVUELVE EL VALOR TRUE Y UN OBJETO CON LOS DATOS DEL USUARIO
-            //LOS DATOS DEL USUARIO ESTAN EN LA POSICION 1 DEL ARRAY
-            let datos = await getInfo();
+        //AL HACER LA CONSULTA A LA API, SE DEVUELVE EL VALOR TRUE Y UN OBJETO CON LOS DATOS DEL USUARIO
+        //LOS DATOS DEL USUARIO ESTAN EN LA POSICION 1 DEL ARRAY
+        let datos = await getInfo();
 
-            //ESTABLECER EN EL ESTADO LOS DATOS EXISTENTES DE USUARIO
-            this.setState({
-                nombre: datos[1].nombre,
-                apellidos: datos[1].apellidos,
-                correo: datos[1].correo,
-                username: datos[1].username,
-                contraseña: datos[1].contraseña
-            }, () => { });
-        } catch (error) {
-            alert(error);
-        }
+        //ESTABLECER EN EL ESTADO LOS DATOS EXISTENTES DE USUARIO
+        this.setState({
+            nombre: datos[1].nombre,
+            apellidos: datos[1].apellidos,
+            correo: datos[1].correo,
+            username: datos[1].username,
+            contraseña: datos[1].contraseña
+        }, () => { });
 
     }
 
@@ -62,21 +58,16 @@ export default class Perfil extends React.Component {
 
     //FUNCION CUANDO SE ENVÍA EL FORMULARIO
     async handleSubmit(element) {
+        element.preventDefault();
         //EN FUNCION DEL NUMERO DE DATOS QUE SE LE ENVÍE
         let datos = element.target.querySelectorAll(".datosUsuario");
 
-        try {
-            let consulta = await actualizarInfo(datos.length, datos);
+        let consulta = await actualizarInfo(datos.length, datos);
 
-            alert(consulta);
+        alert("Cambios realizados con exito");
 
-            //CERRAR TODAS LAS SESIONES
-            localStorage.clear();
-
-        } catch (error) {
-            alert(error);
-        }
-
+        //CERRAR TODAS LAS SESIONES
+        // localStorage.clear();
     }
 
     render() {
@@ -90,41 +81,60 @@ export default class Perfil extends React.Component {
             contraseña: this.state.contraseña
         }
         return (
-            <div id="datosPersonales">
-                <form id="datos" onSubmit={this.handleSubmit.bind(this)}>
-                    <h2>Datos personales</h2>
+            <div id="datosPersonales" className="d-flex justify-content-start">
+                <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="m-3 d-flex flex-column align-items-left">
+                    <div className="mb-2">
+                        <h2 >Datos personales</h2>
+                    </div>
 
-                    <label>Nombre de usuario</label>
-                    <input type="text" className="datosUsuario" name="username" defaultValue={usuario.username} disabled></input>
+                    <div className="row mb-3">
+                        <div className="col">
+                            <label className="form-label">Nombre</label>
+                            <input type="text" className="datosUsuario form-control" name="nombre" defaultValue={usuario.nombre}></input>
+                        </div>
+                        <div className="col">
+                            <label className="form-label">Apellidos</label>
+                            <input type="text" className="datosUsuario form-control" name="apellidos" defaultValue={usuario.apellidos}></input>
+                        </div>
+                    </div>
 
-                    <label>Nombre</label>
-                    <input type="text" className="datosUsuario" name="nombre" defaultValue={usuario.nombre}></input>
+                    <div className="mb-3">
+                        <label className="form-label">Nombre de usuario</label>
+                        <input type="text" className="datosUsuario form-control" name="username" defaultValue={usuario.username} disabled></input>
+                    </div>
 
-                    <label>Apellidos</label>
-                    <input type="text" className="datosUsuario" name="apellidos" defaultValue={usuario.apellidos}></input>
+                    <div className="mb-3">
+                        <label className="form-label">Correo</label>
+                        <input type="email" className="datosUsuario form-control" name="correo" defaultValue={usuario.correo}></input>
+                    </div>
 
-                    <label>Correo</label>
-                    <input type="email" className="datosUsuario" name="correo" defaultValue={usuario.correo}></input>
-
-                    <input type="submit" value="Confirmar cambios"></input>
-
+                    <div className="mb-2">
+                        <input type="submit" value="Confirmar cambios" className="btn btn-outline-light"></input>
+                    </div>
                 </form>
 
-                <form id="contraseña" onSubmit={this.handleSubmit.bind(this)}>
-                    <h2>Contraseña</h2>
+                <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="m-3 d-flex flex-column align-items-left">
+                    <div className="mb-2">
+                        <h2>Contraseña</h2>
+                    </div>
 
-                    <label>Contraseña</label>
-                    <input type="password" name="contraseña" defaultValue={usuario.contraseña} disabled></input>
+                    <div className="mb-2">
+                        <label className="form-label">Contraseña</label>
+                        <input className="form-control" type="password" name="contraseña" defaultValue={usuario.contraseña} disabled></input>
+                    </div>
+                    <div className="mb-2">
+                        <label className="form-label">Nueva contraseña</label>
+                        <input type="password" className="datosUsuario form-control" name="nuevaContraseña" id="nuevaContraseña"></input>
+                    </div>
+                    <div className="mb-2">
+                        <label className="form-label">Repite la nueva contraseña</label>
+                        <input type="password" className="datosUsuario form-control" name="repNuevaContraseña" onChange={this.handleChange.bind(this)}></input>
+                    </div>
 
-                    <label>Nueva contraseña</label>
-                    <input type="password" className="datosUsuario" name="nuevaContraseña" id="nuevaContraseña"></input>
-
-                    <label>Repite la nueva contraseña</label>
-                    <input type="password" className="datosUsuario" name="repNuevaContraseña" onChange={this.handleChange.bind(this)}></input>
-
-                    <input type="submit" value="Cambiar contraseña"></input>
+                    <div className="mb-2">
+                        <input type="submit" value="Cambiar contraseña" className="btn btn-outline-light"></input>
+                    </div>
                 </form>
-
             </div>
         )
     }
@@ -137,8 +147,7 @@ export default class Perfil extends React.Component {
 async function getInfo() {
 
     let usuario = {
-        email: localStorage.getItem("mail"),
-        password: localStorage.getItem("password")
+        email: localStorage.getItem("mail")
     }
 
     let options = {
@@ -166,11 +175,12 @@ async function actualizarInfo(numeroDatos, informacion) {
     switch (numeroDatos) {
         case 4:
             usuario = {
-                username: informacion[0].value,
-                nombre: informacion[1].value,
-                apellidos: informacion[2].value,
+                username: informacion[2].value,
+                nombre: informacion[0].value,
+                apellidos: informacion[1].value,
                 correo: informacion[3].value
             }
+            console.log(usuario);
 
             break;
 
