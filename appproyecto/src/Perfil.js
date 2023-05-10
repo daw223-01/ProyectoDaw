@@ -5,10 +5,10 @@ import React from "react";
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let rutaProd = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let rutaDes = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 
 export default class Perfil extends React.Component {
@@ -159,7 +159,7 @@ async function getInfo() {
         body: JSON.stringify(usuario)
     }
 
-    let consulta = await fetch(rutaDes + "/users", options);
+    let consulta = await fetch(ruta + "/users", options);
 
     if (consulta.ok) {
         return consulta.json();
@@ -209,7 +209,7 @@ async function actualizarInfo(numeroDatos, informacion) {
     }
 
     //CONSULTA A LA API
-    let consulta = await fetch(rutaDes + "/update", options);
+    let consulta = await fetch(ruta + "/update", options);
 
     if (consulta.ok) {
         return consulta.json();

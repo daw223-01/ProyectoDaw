@@ -5,10 +5,10 @@ import React from 'react';
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let rutaProd = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let rutaDes = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 
 /* PANTALLA PRINCIPAL DEL PROGAMA. PANTALLA DE BIENVENIDA */
@@ -145,7 +145,7 @@ async function consultaApi(datos) {
     },
     body: JSON.stringify(datos)
   }
-  let consulta = await fetch(rutaDes + "/users", options);
+  let consulta = await fetch(ruta + "/users", options);
   if (consulta.status === 200) {
     return consulta.json();
 

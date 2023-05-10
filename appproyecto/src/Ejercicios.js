@@ -7,10 +7,10 @@ import CardEjercicio from "./CardEjercicio";
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let rutaProd = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let rutaDes = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 
 export default class Ejercicios extends React.Component {
@@ -114,7 +114,7 @@ async function getEjercicios() {
             'Content-Type': 'application/json'
         }
     }
-    let consulta = await fetch(rutaDes + "/ejercicios", options);
+    let consulta = await fetch(ruta + "/ejercicios", options);
 
     if (consulta.ok) {
         return consulta.json();

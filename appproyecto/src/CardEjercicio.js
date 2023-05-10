@@ -6,10 +6,10 @@ import Modal from "./Modal";
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let rutaProd = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let rutaDes = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 export default class CardEjercicio extends React.Component {
     constructor(props) {

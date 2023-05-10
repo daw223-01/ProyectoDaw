@@ -5,10 +5,10 @@ import './Modal.css';
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let rutaProd = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let rutaDes = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 
 export default class Modal extends React.Component {
@@ -110,7 +110,7 @@ async function obtenerRutinas() {
         body: JSON.stringify(usuario)
     }
 
-    let consulta = await fetch(rutaDes + "/getrutinas", options);
+    let consulta = await fetch(ruta + "/getrutinas", options);
 
     if (consulta.ok) {
         return consulta.json();
@@ -145,7 +145,7 @@ async function rutinasEjercicios(){
         body: JSON.stringify(datos)
     };
 
-    let consulta = await fetch(rutaDes+"/setEjercicioRutina", options);
+    let consulta = await fetch(ruta+"/setEjercicioRutina", options);
 
     if (consulta.ok) {
         return consulta.json();

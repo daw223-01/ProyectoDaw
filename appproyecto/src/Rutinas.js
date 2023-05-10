@@ -4,10 +4,10 @@ import './Rutinas.css';
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let rutaProd = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let rutaDes = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 
 export default class Rutinas extends React.Component {
@@ -117,7 +117,7 @@ async function getRutinas() {
         },
         body: JSON.stringify(username)
     }
-    let consulta = await fetch(rutaDes + "/getrutinas", options);
+    let consulta = await fetch(ruta + "/getrutinas", options);
 
     if (consulta.ok) {
         return consulta.json();
@@ -140,7 +140,7 @@ async function getEjerciciosRutinas(nombreRutina) {
         },
         body: JSON.stringify(datos)
     }
-    let consulta = await fetch(rutaDes + "/getEjercicioRutina", options);
+    let consulta = await fetch(ruta + "/getEjercicioRutina", options);
 
     if (consulta.ok) {
         return consulta.json();
@@ -179,7 +179,7 @@ class NuevaRutina extends React.Component {
             body: JSON.stringify(body)
         }
 
-        let consulta = await fetch(rutaDes + "/setrutinas", options);
+        let consulta = await fetch(ruta + "/setrutinas", options);
 
         if (consulta.ok) {
             return (consulta.json());
@@ -241,7 +241,7 @@ class DatosRutina extends React.Component {
                 rutinaName: rutina
             })
         }
-        let consulta = await fetch(rutaDes + "/deleteRutina", options);
+        let consulta = await fetch(ruta + "/deleteRutina", options);
 
         if (consulta.ok) {
             return consulta.json();
@@ -270,7 +270,7 @@ class DatosRutina extends React.Component {
                 ejercicio: ej
             })
         }
-        let consulta = await fetch(rutaDes + "/deleteEjRutina", options);
+        let consulta = await fetch(ruta + "/deleteEjRutina", options);
 
         if (consulta.ok) {
             return consulta.json();
