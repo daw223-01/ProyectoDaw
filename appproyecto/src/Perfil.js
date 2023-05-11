@@ -63,7 +63,7 @@ export default class Perfil extends React.Component {
         let datos = element.target.querySelectorAll(".datosUsuario");
 
         let consulta = await actualizarInfo(datos.length, datos);
-
+	console.log(consulta);
         alert("Cambios realizados con exito");
 
         //CERRAR TODAS LAS SESIONES

@@ -87,8 +87,8 @@ class DefaultController extends AbstractController
                     $email = $infousuario['email'];
                     $password = $infousuario['password'];
                     $username = $infousuario['username'];
-                    $name = $infousuario['username'];
-                    $apellidos = $infousuario['username'];
+                    $name = $infousuario['name'];
+                    $apellidos = $infousuario['apellidos'];
 
                     //BUSCAR EN LA BASE DE DATOS SI EL USUARIO ESTÁ REGISTRADO
                     //AUNQUE EL EMAIL NO SEA LA CLAVE PRIMARIA, DENTRO DEL PROGRAMA SOLO PODRÁ EXISTIR UNA
@@ -236,8 +236,6 @@ class DefaultController extends AbstractController
 
 
                 return new Response(json_encode($listado));
-            } else {
-                return new Response(json_encode("No Encontrado"));
             }
 
             // return new Response(json_encode($usuario));
