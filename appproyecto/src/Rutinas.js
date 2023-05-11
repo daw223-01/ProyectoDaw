@@ -4,10 +4,10 @@ import './Rutinas.css';
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-//let ruta = "http://now-exercise.ddns.net/api";
+let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-let ruta = "http://localhost/api";
+//let ruta = "http://localhost/api";
 
 
 export default class Rutinas extends React.Component {
