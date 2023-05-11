@@ -5,7 +5,6 @@ import Ejercicios from "./Ejercicios";
 import Perfil from "./Perfil";
 import { Link, RouterProvider, createBrowserRouter, BrowserRouter, Route } from 'react-router-dom'
 import Rutinas from "./Rutinas";
-import ModalInput from "./ModalInput";
 
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
         element: <Inicio></Inicio>
     },
     {
-        path: "/ejercicios",
+        path: "/ejercicios/:filtro",
         element: <Ejercicios></Ejercicios>
     },
     {
@@ -42,8 +41,7 @@ export default class Main extends React.Component {
         this.state = {
             ejercicios: "",
             lista: "",
-            active: false,
-            datosEj: ""
+            filtro: ""
         }
     }
 
@@ -70,8 +68,7 @@ export default class Main extends React.Component {
 
     }
 
-    //FUNCION PARA MOSTRAR LOS EJERCICIOS EN EL INPUT
-    //A MEDIDA QUE SE BUSCA, SE BUSCA LO QUE COINCIDE
+    //FUNCION PARA MOSTRAR LOS EJERCICIOS EN EL INPUT. A MEDIDA QUE SE BUSCA, SE BUSCA LO QUE COINCIDE
     ejerciciosInput(input) {
         let contenidoInp = input.target.value;
         let listaEj = this.state.ejercicios;
@@ -96,35 +93,28 @@ export default class Main extends React.Component {
 
     //FUNCION AL HACER CLICK EN LOS EJERCICIOS MOSTRADOS
     verEjercicio(ejercicio) {
+        let inputBusqueda = document.querySelector(".inputBusqueda");
+        inputBusqueda.value = ejercicio.nombre;
+    }
 
-        let datosEjercicio = {
-            nombre: ejercicio.nombre,
-            grupoMuscular: ejercicio.grupoMuscular,
-            descripcion: ejercicio.descripcion,
-            video: ejercicio.urlVideo,
-            img: ejercicio.urlImg
-        }
+    //FILTRO DE BÚSQUEDA DE EJERCICIOS
+    filtroBusqueda() {
+        let inputBusqueda = document.querySelector(".inputBusqueda").value;
+        let url = "/ejercicios/" + inputBusqueda;
 
-        //CREAR UN ESTADO PARA MANDARLO COMO PROP AL COMPONENTE MODAL
         this.setState({
-            datosEj: datosEjercicio
-        }, () => {
-
+            filtro: url
         });
     }
 
     //FUNCIONES A EJECUTAR AL RENDERIZAR COMPONENTE
     componentDidMount() {
         this.buscarEjercicios();
-        this.setState({
-            showModal: true
-        });
     }
 
 
     render() {
-        //CREAR UN ARRAY CON LOS NOMBRES DE LOS EJERCICIOS PARA MOSTRARLOS EN 
-        //LA BARRA DE BUSQUEDA DE LA CABECERA
+        //CREAR UN ARRAY CON LOS NOMBRES DE LOS EJERCICIOS PARA MOSTRARLOS EN LA BARRA DE BUSQUEDA DE LA CABECERA
         let lista = [];
         let nombresEj = [];
         if (this.state.active) {
@@ -132,7 +122,7 @@ export default class Main extends React.Component {
 
             //AL HACER CLICK EN UN RESULTADO, SE MUESTRAN LOS DATOS DE ESE EJERCICIO
             nombresEj = lista.map(ej =>
-                <label className="form-control resultBusqueda" onClick={() => this.verEjercicio(ej)} data-bs-toggle="modal" data-bs-target="#ventanaModalInput" >
+                <label className="form-control resultBusqueda" onClick={() => this.verEjercicio(ej)}>
                     {ej.nombre}
                 </label>
             );
@@ -151,14 +141,14 @@ export default class Main extends React.Component {
                             <div className="col-4">
                                 <div className="input-group">
 
-                                    <input type="text" className="form-control" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
+                                    <input type="text" className="form-control inputBusqueda" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
                                     </input>
 
-                                    <button className="btn btn-outline-secondary">
+                                    <a href={this.state.filtro} className="btn btn-outline-secondary" onClick={this.filtroBusqueda.bind(this)}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                         </svg>
-                                    </button>
+                                    </a>
                                 </div>
 
                                 <div class="position-absolute d-flex flex-column contenedorNombres">
@@ -168,47 +158,44 @@ export default class Main extends React.Component {
                             </div>
 
                             <div className="col-2 justify-content-evenly" >
-				<div>�
-					{localStorage.getItem('username')}
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle ml-1" viewBox="0 0 16 16">
-					  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-					  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-					</svg>
-				</div>
-				<div>
-	                                <button class="btn btn-outline-secondary" onClick={this.cerrarSesion.bind(this)}>
-						Cerrar sesion
-					</button>
-				</div>
+                                <div>
+                                    {localStorage.getItem('username')}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle ml-1" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-secondary" onClick={this.cerrarSesion.bind(this)}>
+                                        Cerrar sesion
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </header>
                 </div>
 
                 <div className="row flex-fill">
-                    <div id="sidebar" className="col-1 text-fit fs-3 fs-md-4 fs-lg-5">
+                    <div id="sidebar" className="col-1 ">
                         <div className="row">
                             <div className="col-12">
-                                <a href="/">Inicio</a>
+                                <a className="text-fit fs-sm-6 fs-md-5 fs-lg-3" href="/">Inicio</a>
                             </div>
                             <div className="col-12">
-                                <a href="/ejercicios">Ejercicios</a>
+                                <a className="text-fit fs-sm-6 fs-md-5 fs-lg-3" href="/ejercicios/all">Ejercicios</a>
                             </div>
                             <div className="col-12">
-                                <a href="/rutinas">Rutinas</a>
+                                <a className="text-fit fs-sm-6 fs-md-5 fs-lg-3" href="/rutinas">Rutinas</a>
                             </div>
                             <div className="col-12">
-                                <a href="/perfil">Perfil</a>
+                                <a className="text-fit fs-sm-6 fs-md-5 fs-lg-3" href="/perfil">Perfil</a>
                             </div>
                         </div>
                     </div>
 
-                    <div id="content" className="col-11">
-                        {/* MODAL EJERCICIO AL HACER CLICK EN LOS RESULTADOS DEL BUSCADOR*/}
-                        <ModalInput datos={this.state.datosEj}></ModalInput>
-
+                    <div id="content" className="col-11">                        
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
-                        <RouterProvider router={router}></RouterProvider>
+                        <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
                     </div>
                 </div>
                 <div className="row">

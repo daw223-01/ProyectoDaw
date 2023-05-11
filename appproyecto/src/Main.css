@@ -1,14 +1,5 @@
 #main {
     background-color: lightgray;
-    /* min-height: 100%;
-    width: 100%; */
-    /* background-color: lightgray;
-    display: grid;
-    grid-template-areas: 'header header' 'sidebar contenido' 'foot foot';
-    grid-template-rows: 10vh 1fr 10vh;
-    grid-template-columns: 10% 90%;
-    transition: grid-template-columns .3s ease; */
-
 }
 
 header {
@@ -35,49 +26,3 @@ a{
 footer{
     background-color: gray;
 }
-
-/* .main2{
-    grid-template-columns: 5% 95%;
-}
-
-header{
-    grid-area: header;
-    background-color: lightcoral;
-    
-}
-footer{
-    grid-area: foot;
-    background-color: gray;
-} */
-
-    /* #sidebar{
-    grid-area: sidebar;
-    background-color: lightgreen;
-    /* horizontal, vertical, blur, extension, color */
-    /* box-shadow: 10px 0px 13px -10px rgba(0,0,0,0.75);
-    display: flex;
-    flex-direction: column;
-    gap: 2%;
-
-} */
-
-
-    /* #content{
-    grid-area: contenido;
-    padding: 5%;
-}
-
-#sidebar > div{
-    list-style: none;
-    text-align: center;
-    
-}
-#sidebar > div:hover{
-    background-color: rgb(56, 168, 56);
-    color: white;
-    
-}
-#sidebar > div > a{
-    text-decoration: none;
-    color: black;
-} */

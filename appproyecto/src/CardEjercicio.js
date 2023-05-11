@@ -1,7 +1,6 @@
 import { element } from "prop-types";
 import React from "react";
 import './CardEjercicio.css';
-import Modal from "./Modal";
 
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
@@ -32,12 +31,14 @@ export default class CardEjercicio extends React.Component {
     }
 
     render() {
-        
+
         return (
-            <div className="ejercicio" data-bs-toggle="modal" data-bs-target="#ventanaModal" onClick={this.añadirDatos.bind(this)}>
-                <img src={this.props.src} alt="No img"></img>
-                <h3>{this.props.titulo}</h3>
-                <p>{this.props.desc}</p>
+            <div className="ejercicio card m-3 col-xxl-2 col-lg-3 col-md-5 col-sm-12" data-bs-toggle="modal" data-bs-target="#ventanaModal" onClick={this.añadirDatos.bind(this)}>
+                <img src={this.props.src} alt="No img" className="card-img-top"></img>
+                <div className="card-body">
+                    <h4 className="card-title">{this.props.titulo}</h4>
+                    <p className="card-text">{this.props.desc}</p>
+                </div>
             </div>
         )
     }
