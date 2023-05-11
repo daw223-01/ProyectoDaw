@@ -10,10 +10,10 @@ import ModalInput from "./ModalInput";
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-let ruta = "http://now-exercise.ddns.net/api";
+//let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-//let ruta = "http://localhost/api";
+let ruta = "http://localhost/api";
 
 //RUTAS DE LOS DIFERENTES COMPONENTES A RENDERIZAR
 const router = createBrowserRouter([
@@ -168,7 +168,7 @@ export default class Main extends React.Component {
                             </div>
 
                             <div className="col-2 justify-content-evenly" >
-				<div>Â
+				<div>ï¿½
 					{localStorage.getItem('username')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle ml-1" viewBox="0 0 16 16">
 					  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
