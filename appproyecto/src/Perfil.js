@@ -63,11 +63,18 @@ export default class Perfil extends React.Component {
         let datos = element.target.querySelectorAll(".datosUsuario");
 
         let consulta = await actualizarInfo(datos.length, datos);
-	console.log(consulta);
+        console.log(consulta);
         alert("Cambios realizados con exito");
 
         //CERRAR TODAS LAS SESIONES
         // localStorage.clear();
+    }
+
+    //FUNCION ELIMINAR CUENTA
+    async eliminarCuenta(){
+        let respuesta = await delCuenta();
+
+        alert(respuesta);
     }
 
     render() {
@@ -81,7 +88,8 @@ export default class Perfil extends React.Component {
             contraseña: this.state.contraseña
         }
         return (
-            <div id="datosPersonales" className="d-flex justify-content-start">
+            <div id="datosPersonales" className="d-flex justify-content-start align-items-center">
+                {/* FORMULARIO DE DATOS DE USUARIO */}
                 <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="m-3 d-flex flex-column align-items-left">
                     <div className="mb-2">
                         <h2 >Datos personales</h2>
@@ -113,6 +121,7 @@ export default class Perfil extends React.Component {
                     </div>
                 </form>
 
+                {/* FORMULARIO DE CONTRASEÑA DE USUARIO */}
                 <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="m-3 d-flex flex-column align-items-left">
                     <div className="mb-2">
                         <h2>Contraseña</h2>
@@ -135,6 +144,24 @@ export default class Perfil extends React.Component {
                         <input type="submit" value="Cambiar contraseña" className="btn btn-outline-light"></input>
                     </div>
                 </form>
+
+                {/* BOTON BORRAR CUENTA DE USUARIO */}
+                <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelCuenta">Borrar cuenta</button>
+                {/* MODAL PARA CONFIRMAR ELIMINACION */}
+                <div class="modal fade" id="modalDelCuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                ¿Seguro que deseas eliminar la cuenta para siempre?<br></br>
+                                Esta acción será irreversible
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger" onClick={this.eliminarCuenta.bind(this)}>Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -213,5 +240,28 @@ async function actualizarInfo(numeroDatos, informacion) {
 
     if (consulta.ok) {
         return consulta.json();
+    }
+}
+
+//BORRAR LA CUENTA DE USUARIO
+async function delCuenta(){
+    let usuario = localStorage.getItem("username");
+
+    let options = {
+        method: "POST",
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuario)
+    }
+    let consulta = await fetch(ruta+"/delUser", options);
+
+    if (consulta.ok) {
+        alert("Usuario borrado");
+        localStorage.clear();
+        window.location.reload();
+    }else{
+        alert("Error al borrar");
     }
 }

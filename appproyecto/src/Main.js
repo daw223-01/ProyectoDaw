@@ -130,14 +130,17 @@ export default class Main extends React.Component {
 
         return (
             <div id="main" className="container-fluid min-vh-100 d-flex flex-column justify-content-between">
+                {/* CABECERA */}
                 <div className="row">
-                    <header className="p-3 container-fluid text-start">
-                        <div className="row justify-content-between align-items-center w-100">
+                    <header className="p-3 w-100">
+                        <div className="row justify-content-between align-items-center">
+                            {/* LOGO */}
                             <div className="col-1">
                                 <img alt="LOGO">
                                 </img>
                             </div>
 
+                            {/* BARRA DE BUSQUEDA */}
                             <div className="col-4">
                                 <div className="input-group">
 
@@ -157,14 +160,20 @@ export default class Main extends React.Component {
 
                             </div>
 
-                            <div className="col-2 justify-content-evenly" >
-                                <div>
-                                    {localStorage.getItem('username')}
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle ml-1" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                    </svg>
+                            {/* NOMBRE DE USUARIO */}
+                            <div className="col-3 d-flex align-items-center">
+                                <div className="me-1">
+                                    <label className="form-label me-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle ml-1" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                        </svg>
+                                    </label>
+
+                                    <label className="form-label">{localStorage.getItem('username')}</label>
+
                                 </div>
+
                                 <div>
                                     <button class="btn btn-outline-secondary" onClick={this.cerrarSesion.bind(this)}>
                                         Cerrar sesion
@@ -175,6 +184,7 @@ export default class Main extends React.Component {
                     </header>
                 </div>
 
+                {/* SIDEBAR Y CONTENIDO */}
                 <div className="row flex-fill">
                     <div id="sidebar" className="col-1 ">
                         <div className="row">
@@ -193,11 +203,13 @@ export default class Main extends React.Component {
                         </div>
                     </div>
 
-                    <div id="content" className="col-11">                        
+                    <div id="content" className="col-11">
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
                     </div>
                 </div>
+
+                {/* FOOTER */}
                 <div className="row">
                     <footer className="col-12">
                         Footer

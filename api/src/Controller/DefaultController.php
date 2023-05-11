@@ -110,7 +110,7 @@ class DefaultController extends AbstractController
 
                         //SE CREA UN USUARIO PARA INICIAR SESION
                         $datosUsuario = [
-                            'username' => $newUser->getNombre(),
+                            'username' => $newUser->getUsername(),
                             'correo' => $newUser->getEmail()
                         ];
 
@@ -442,5 +442,47 @@ class DefaultController extends AbstractController
         $entityManager->flush();
 
         return new Response(json_encode($ejRut));
+    }
+
+
+    /**
+     * @Route("/delUser", name="delUser")
+     */
+    public function borrarUsuario(ManagerRegistry $doctrine){
+        //SE UTILIZA ESTE MECANISMO PARA OBTENER LOS DATOS RECIBIDOS
+        $data = file_get_contents('php://input');
+
+        //DECODIFICAR LOS DATOS Y GUARDARLOS EN UN ARRAY
+        $info = json_decode($data, true);
+        $entityManager = $doctrine->getManager();
+
+        //DATOS POR SEPARADO
+        $username = $info;
+
+        //ENCONTRAR EL ID DE USUARIO PARA ELIMINAR TODAS LAS OCURRENCIAS EN LA BASE DE DATOS
+        $user =  $userId = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username' => $username));
+        $userId = $doctrine->getRepository(Usuarios::class)->findOneBy(array('username' => $username))->getId();
+        $rutina = $doctrine->getRepository(Rutinas::class)->findBy(array('id_usuario' => $userId));
+
+        // //POR CADA RUTINA, BUSCAR LOS EJERCICIOS/RUTINA
+        foreach ($rutina as $rut) {
+            $idRutina = $rut->getId();
+
+            $ejRut = $doctrine->getRepository(RutinasEjercicios::class)->findBy(array("id_rutina" => $idRutina));
+
+            //BORRAR RUTINA/EJERCICIO Y RUTINA
+            foreach ($ejRut as $result) {
+                $entityManager->remove($result);
+            }
+
+            $entityManager->remove($rut);
+        }
+
+        //BORRAR LOS DATOS EN LA TABLA USUARIOS
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return new Response(json_encode("Borrado"));
+        
     }
 }
