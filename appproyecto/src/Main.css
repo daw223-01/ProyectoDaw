@@ -5,6 +5,7 @@
 header {
     background-color: rgb(219, 103, 103);
 }
+
 .contenedorNombres{
     overflow-y: auto;
     height: 20%;
@@ -14,10 +15,8 @@ header {
     cursor: pointer;
 }
 
-#sidebar {
+#navBar {
     background-color: rgb(219, 103, 103);
-    /* horizontal, vertical, blur, extension, color */
-    /* box-shadow: 10px 0px 13px -10px rgba(0,0,0,0.75); */
 }
 a{
     text-decoration: none;

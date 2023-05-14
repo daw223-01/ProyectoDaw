@@ -39,7 +39,14 @@ export default class Modal extends React.Component {
     //FUNCION PARA AÑADIR EJERCICIOS A LA RUTINA
     async addRutinasEjercicios(){
         let consulta = await rutinasEjercicios();
-        console.log(consulta);
+
+        //REINICIAR VALORES FORMULARIO
+        document.querySelector(".selectModal").value="Selecciona rutina";
+
+        let grupoInputs = document.querySelectorAll("input");
+        grupoInputs.forEach(element => {
+            element.value = "";
+        });
     }
 
     //EJECUTAR FUNCIONES AL INCIIAR COMPONENTE

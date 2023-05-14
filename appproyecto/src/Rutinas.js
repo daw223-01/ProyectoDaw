@@ -219,9 +219,12 @@ class NuevaRutina extends React.Component {
 class DatosRutina extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            listaEjRutina: ""
+        }
     }
 
-    //FUNCION ELIMINAR RUTINA
+    //FUNCIONES ELIMINAR RUTINA
     async deleteRutina() {
         let nombreRutina = document.querySelector("#ejRutModal h2").textContent;
         let username = localStorage.getItem("username");
@@ -248,14 +251,20 @@ class DatosRutina extends React.Component {
         }
     }
 
-    //FUNCION BORRAR EJERCICIO DE RUTINA
-    async deleteEjRutina() {
+    //FUNCIONES BORRAR EJERCICIO DE RUTINA
+    async deleteEjRutina(element) {
         let nombreRutina = document.querySelector("#ejRutModal h2").textContent;
         let username = localStorage.getItem("username");
-        let ejercicio = document.querySelectorAll(".infoRutinaEj > div")[0].textContent;
+
+        let btnDel = element.target;
+        let parent = btnDel.parentElement;
+        console.log(parent);
+        let ejercicio = parent.querySelectorAll("div")[0].textContent;
 
         let respuesta = await this.findEj(nombreRutina, username, ejercicio);
-        
+
+        window.location.reload();
+
     }
     async findEj(rutina, user, ej) {
         let options = {
@@ -278,8 +287,8 @@ class DatosRutina extends React.Component {
         }
     }
 
-    //FUNCION AL INICIAR EL COMPONENTE
-    componentDidMount() {
+    //FUNCION PARA GENERAR LISTA DE EJERCICIOS/RUTINA
+    showEjerciciosRutina() {
         let datosRutina = this.props.datosRutina;
 
         let lista = Object.keys(datosRutina).map(element => (
@@ -293,6 +302,11 @@ class DatosRutina extends React.Component {
         ));
 
         return lista;
+    }
+
+    //FUNCION AL INICIAR EL COMPONENTE
+    componentDidMount() {
+        this.showEjerciciosRutina();
     }
 
     render() {
@@ -313,7 +327,7 @@ class DatosRutina extends React.Component {
                                     <div className="col-3">Repeticiones/Ronda</div>
                                     <div className="col-2">Tiempo</div>
                                 </div>
-                                {this.componentDidMount()}
+                                {this.showEjerciciosRutina()}
                             </form>
                         </div>
                         <div className="modal-footer">
