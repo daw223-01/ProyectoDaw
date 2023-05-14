@@ -132,51 +132,55 @@ export default class Main extends React.Component {
             <div id="main" className="container-fluid min-vh-100 d-flex flex-column">
                 {/* NAVBAR HEADER*/}
                 <div className="row">
-                    <nav id="navBar" class="navbar navbar-expand-lg bg-body-tertiary w-100">
-                        <div class="container-fluid">
+                    <nav id="navBar" className="navbar navbar-expand-lg bg-body-tertiary w-100">
+                        <div className="container-fluid">
                             {/* LOGO */}
-                            <a class="navbar-brand" href="/">
+                            <a className="navbar-brand" href="/">
                                 <img alt="LOGO">
                                 </img>
                             </a>
                             {/* BOTON RESPONSIVE */}
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
                             </button>
 
                             {/* OPCIONES MENU */}
-                            <div class="collapse navbar-collapse" id="navbarScroll">
-                                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                            <div className="collapse navbar-collapse" id="navbarScroll">
+                                <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+                                    <li className="nav-item">
+                                        <a className="nav-link active" aria-current="page" href="/">Inicio</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/ejercicios/all">Ejercicios</a>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/ejercicios/all">Ejercicios</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/rutinas">Rutinas</a>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/rutinas">Rutinas</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/perfil">Perfil</a>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/perfil">Perfil</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <button class="nav-link btn btn-outline-secondary" onClick={this.cerrarSesion.bind(this)}>
+                                    <li className="nav-item">
+                                        <button className="nav-link btn btn-outline-secondary" onClick={this.cerrarSesion.bind(this)}>
                                             Cerrar sesion
                                         </button>
                                     </li>
                                 </ul>
 
                                 {/* BARRA DE BUSQUEDA */}
-                                <form class="d-flex flex-row" role="search" action={this.state.filtro}>
-                                    {/* <input type="text" className="form-control inputBusqueda" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
-                                    </input>
-                                    <button className="btn btn-outline-secondary" onClick={this.filtroBusqueda.bind(this)}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <form className="d-flex flex-row" role="search">
+                                    <div>
+                                        <input type="text" className="form-control inputBusqueda" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
+                                        </input>
+                                        <div class="position-absolute d-flex flex-column contenedorNombres">
+                                            {nombresEj}
+                                        </div>
+                                    </div>
+
+                                    <a href={this.state.filtro} className="btn btn-outline-secondary" onClick={this.filtroBusqueda.bind(this)}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                         </svg>
-                                    </button> */}
-                                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                                    <button className="btn btn-outline-success" type="submit">Search</button>
+                                    </a>
                                 </form>
                             </div>
                         </div>
@@ -186,7 +190,7 @@ export default class Main extends React.Component {
                 {/* CONTENIDO */}
                 <div className="row flex-fill">
 
-                    <div id="content" className="col-11">
+                    <div id="content" className="col-11 container-fluid justify-content-center">
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
                     </div>

@@ -8,7 +8,7 @@ header {
 
 .contenedorNombres{
     overflow-y: auto;
-    height: 20%;
+    height: 100%;
     z-index: 99;
 }
 .resultBusqueda{

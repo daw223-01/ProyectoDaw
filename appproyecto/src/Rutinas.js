@@ -203,8 +203,8 @@ class NuevaRutina extends React.Component {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" onClick={this.newRutina.bind(this)}>Añadir</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-primary" onClick={this.newRutina.bind(this)}>Añadir</button>
                         </div>
 
                     </div>
@@ -297,7 +297,7 @@ class DatosRutina extends React.Component {
                 <div className="col-1">{datosRutina[element].rondas}</div>
                 <div className="col-3">{datosRutina[element].repeticiones}</div>
                 <div className="col-2">{datosRutina[element].tiempo}</div>
-                <button type="button" class="btn btn-outline-danger col-2" onClick={this.deleteEjRutina.bind(this)}>Eliminar</button>
+                <button type="button" className="btn btn-outline-danger col-2" onClick={this.deleteEjRutina.bind(this)}>Eliminar</button>
             </div>
         ));
 
@@ -331,8 +331,8 @@ class DatosRutina extends React.Component {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" class="btn btn-outline-danger col-2" onClick={this.deleteRutina.bind(this)}>Eliminar rutina</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-outline-danger col-2" onClick={this.deleteRutina.bind(this)}>Eliminar rutina</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>

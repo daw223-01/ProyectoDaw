@@ -69,8 +69,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div className='bienvenida container-fluid h-100'>
-        <div class="row align-items-center justify-content-around h-100">
-          <div class="card col-lg-3 col-md-6">
+        <div className="row align-items-center justify-content-around h-100">
+          <div className="card col-lg-3 col-md-6">
             <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
               <h2>LOGIN</h2>
 
@@ -80,7 +80,7 @@ export default class App extends React.Component {
             </form>
           </div>
 
-          <div class="card col-lg-3 col-md-6">
+          <div className="card col-lg-3 col-md-6">
             <form className='registro signup' onSubmit={this.handleSubmit.bind(this)}>
               <h2>SIGN UP</h2>
 

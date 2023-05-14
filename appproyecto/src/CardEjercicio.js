@@ -33,8 +33,8 @@ export default class CardEjercicio extends React.Component {
     render() {
 
         return (
-            <div className="ejercicio card m-3 col-xxl-2 col-lg-3 col-md-5 col-sm-12" data-bs-toggle="modal" data-bs-target="#ventanaModal" onClick={this.añadirDatos.bind(this)}>
-                <img src={this.props.src} alt="No img" className="card-img-top"></img>
+            <div className="ejercicio shadow card m-3 col-xxl-2 col-lg-3 col-md-5 col-sm-12" data-bs-toggle="modal" data-bs-target="#ventanaModal" onClick={this.añadirDatos.bind(this)}>
+                <img src={this.props.src} alt="No img" className="card-img-top" width="100%"></img>
                 <div className="card-body">
                     <h4 className="card-title">{this.props.titulo}</h4>
                     <p className="card-text">{this.props.desc}</p>

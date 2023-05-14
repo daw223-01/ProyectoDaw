@@ -92,8 +92,8 @@ export default class Modal extends React.Component {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" onClick={this.addRutinasEjercicios.bind(this)} data-bs-dismiss="modal">Añadir a rutina</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" className="btn btn-primary" onClick={this.addRutinasEjercicios.bind(this)} data-bs-dismiss="modal">Añadir a rutina</button>
                         </div>
 
                     </div>

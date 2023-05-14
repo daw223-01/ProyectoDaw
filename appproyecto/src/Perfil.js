@@ -148,16 +148,16 @@ export default class Perfil extends React.Component {
                 {/* BOTON BORRAR CUENTA DE USUARIO */}
                 <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelCuenta">Borrar cuenta</button>
                 {/* MODAL PARA CONFIRMAR ELIMINACION */}
-                <div class="modal fade" id="modalDelCuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
+                <div className="modal fade" id="modalDelCuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-body">
                                 ¿Seguro que deseas eliminar la cuenta para siempre?<br></br>
                                 Esta acción será irreversible
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" onClick={this.eliminarCuenta.bind(this)}>Eliminar</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" className="btn btn-danger" onClick={this.eliminarCuenta.bind(this)}>Eliminar</button>
                             </div>
                         </div>
                     </div>
