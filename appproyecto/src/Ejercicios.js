@@ -8,10 +8,10 @@ import { useParams } from "react-router-dom";
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-let ruta = "http://now-exercise.ddns.net/api";
+//let ruta = "http://now-exercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
-//let ruta = "http://localhost/api";
+let ruta = "http://localhost/api";
 
 
 export default class Ejercicios extends React.Component {
@@ -71,7 +71,7 @@ export default class Ejercicios extends React.Component {
     getFiltro() {
         let url = window.location.href;
         let arrayUrl = url.replaceAll("%20", " ").split("/");
-        let parametro = arrayUrl[arrayUrl.length - 1];
+        let parametro = arrayUrl[arrayUrl.length - 1].split(" ");
 
         this.setState({
             filtro: parametro
@@ -97,20 +97,16 @@ export default class Ejercicios extends React.Component {
     render() {
         console.log(this.state.filtro);
         let lista = [];
+
         //COMO EL RESULTADO ES UN OBJETO CON OBJETOS, SE DEBE ITERAR DE ESTA FORMA
-        // let lista = Object.keys(this.state.ej).map((element, i) => {
-        //     console.log(this.state.ej[element].nombre);
-        //     <CardEjercicio
-        //         src={this.state.ej[element].img}
-        //         titulo={this.state.ej[element].nombre}
-        //         desc={this.state.ej[element].descripcion}
-        //         musc={this.state.ej[element].grupoMuscular}
-        //         video={this.state.ej[element].video}
-        //         datosEj={this.datosEjercicio.bind(this)}
-        //     ></CardEjercicio>
-        // });
         Object.keys(this.state.ej).map((element, i) => {
-            if (this.state.ej[element].nombre.includes(this.state.filtro)) {
+            //SABER SI LOS EJERCICIOS ESTÁN EL PALABRA DE BÚSQUEDA
+            const containsInput = this.state.filtro.some((value) => {
+                return this.state.ej[element].nombre.includes(value) || this.state.ej[element].grupoMuscular.includes(value);
+            });
+            console.log(containsInput);
+
+            if (containsInput) {
                 lista.push(
                     <CardEjercicio
                         src={this.state.ej[element].img}
@@ -170,6 +166,7 @@ async function getEjercicios() {
         return consulta.json();
     }
 }
+
 
 
 

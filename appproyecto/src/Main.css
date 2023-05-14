@@ -8,6 +8,7 @@ header {
 .contenedorNombres{
     overflow-y: auto;
     height: 20%;
+    z-index: 99;
 }
 .resultBusqueda{
     cursor: pointer;
