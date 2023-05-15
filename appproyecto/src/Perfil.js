@@ -223,8 +223,6 @@ async function actualizarInfo(numeroDatos, informacion) {
             break;
     }
 
-    console.log(usuario);
-
     //OPCIONES PARA LA CONSULTA A LA API
     let options = {
         method: "POST",
