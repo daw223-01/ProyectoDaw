@@ -27,7 +27,7 @@ input:not(input[type=submit]){
 }
 
 .df-messenger-wrapper{
-  visibility: hidden;
+  display: none;
 }
 
 input::placeholder{

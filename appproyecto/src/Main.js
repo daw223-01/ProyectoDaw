@@ -132,12 +132,11 @@ export default class Main extends React.Component {
             <div id="main" className="container-fluid min-vh-100 d-flex flex-column">
                 {/* NAVBAR HEADER*/}
                 <div className="row">
-                    <nav id="navBar" className="navbar navbar-expand-lg bg-body-tertiary w-100">
+                    <nav id="navBar" className="navbar navbar-expand-lg bg-body-tertiary w-100" data-bs-theme="dark">
                         <div className="container-fluid">
                             {/* LOGO */}
                             <a className="navbar-brand" href="/">
-                                <img src="./logoNow.png" alt="LOGO">
-                                </img>
+                                <img src="logoNow.png" alt="LOGO"></img>
                             </a>
                             {/* BOTON RESPONSIVE */}
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
