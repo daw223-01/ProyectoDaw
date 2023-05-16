@@ -30,7 +30,7 @@ appproyecto/.pnp.js
 appproyecto/coverage
 
 # production
-# appproyecto/build
+appproyecto/build
 
 # misc
 appproyecto/.DS_Store
