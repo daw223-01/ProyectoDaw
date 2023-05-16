@@ -108,26 +108,19 @@ export default class App extends React.Component {
 function comprDatos(formulario) {
   let datosUser = "";
 
-  switch (formulario.className) {
-    case "registro login":
-      datosUser = {
-        email: formulario.querySelector("input:nth-child(2)").value,
-        password: formulario.querySelector("input:nth-child(3)").value
-      }
-      break;
-
-    case "registro signup":
-      datosUser = {
-        username: formulario.querySelector("input:nth-child(2)").value,
-        name: formulario.querySelector("input:nth-child(3)").value,
-        apellidos: formulario.querySelector("input:nth-child(4)").value,
-        email: formulario.querySelector("input:nth-child(5)").value,
-        password: formulario.querySelector("input:nth-child(6)").value
-      }
-      break;
-
-    default:
-      break;
+  if (formulario.className.includes("registro login")) {
+    datosUser = {
+      email: formulario.querySelector("input:nth-child(2)").value,
+      password: formulario.querySelector("input:nth-child(3)").value
+    }
+  } else if (formulario.className.includes("registro signup")) {
+    datosUser = {
+      username: formulario.querySelector("input:nth-child(2)").value,
+      name: formulario.querySelector("input:nth-child(3)").value,
+      apellidos: formulario.querySelector("input:nth-child(4)").value,
+      email: formulario.querySelector("input:nth-child(5)").value,
+      password: formulario.querySelector("input:nth-child(6)").value
+    }
   }
 
   return datosUser; //SE DEVUELVE EL OBJETO CON LOS DATOS
