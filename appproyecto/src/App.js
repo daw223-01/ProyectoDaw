@@ -71,7 +71,7 @@ export default class App extends React.Component {
       <div className='bienvenida container-fluid h-100'>
         <div className="row align-items-center justify-content-around h-100 p-5">
           <div className="card col-sm-7 col-lg-4 col-xl-3 col-md-5 mb-5">
-            <form className='registro login d-flex flex-column p-3 gap-2' onSubmit={this.handleSubmit.bind(this)}>
+            <form className='registro login d-flex flex-column p-3 gap-4' onSubmit={this.handleSubmit.bind(this)}>
               <h2>LOGIN</h2>
               <input type='text' name='user' placeholder='Email' className='form-control' required></input>
               <input type='password' name='password' placeholder='Password' className='form-control' required></input>
@@ -80,7 +80,7 @@ export default class App extends React.Component {
           </div>
 
           <div className="card col-sm-7 col-lg-4 col-xl-3 col-md-5">
-            <form className='registro signup d-flex flex-column p-3 gap-2' onSubmit={this.handleSubmit.bind(this)}>
+            <form className='registro signup d-flex flex-column p-3 gap-4' onSubmit={this.handleSubmit.bind(this)}>
               <h2>SIGN UP</h2>
 
               <input type='text' name='user' placeholder='User name' className='form-control' required></input>

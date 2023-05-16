@@ -1,5 +1,5 @@
 .bienvenida{
-  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/personal-weight-training-in-the-gym-royalty-free-image-1568020980.jpg");
+  background-image: url("/appproyecto/public/fondoNow.png");
 
 }
 
@@ -10,17 +10,13 @@
   background-color: rgb(255, 255, 255, .1);
 }
 
-form{
 
-}
 
 h2{
   align-self: center;
+  color: white;
 }
 
-input[type=submit]{
-  align-self: center;
-}
 
 input:not(input[type=submit]){
   align-self: center;
@@ -28,6 +24,14 @@ input:not(input[type=submit]){
   color: black;
   border: 1px solid white;
   
+}
+
+.df-messenger-wrapper{
+  visibility: hidden;
+}
+
+::placeholder{
+  color: rgb(255, 255, 255);
 }
 
 /* .registro{
