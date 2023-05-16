@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  web:
+    image: php:8.1-apache
+    build: .
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      bridge:
+        ipv4_address: 172.17.0.3
+    volumes:
+      - /root/Proyectos:/var/www/html
+  db:
+    image: mysql:latest
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: proyectonow
+    networks:
+      bridge:
+        ipv4_address: 172.17.0.4
+    volumes:
+      - /root/mysql:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    links:
+      - db
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      bridge:
+        ipv4_address: 172.17.0.5
+networks:
+  bridge:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.17.0.0/17
