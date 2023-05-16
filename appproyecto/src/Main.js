@@ -136,7 +136,7 @@ export default class Main extends React.Component {
                         <div className="container-fluid">
                             {/* LOGO */}
                             <a className="navbar-brand" href="/">
-                                <img src="https://educajcyl-my.sharepoint.com/:i:/g/personal/raul_brasan_educa_jcyl_es/EV78bpdoflhPpd6r5eSg4fQB1bmRtAxn9PrHipQVg1ILhw?e=AiqtTA" alt="LOGO">
+                                <img src="/appproyecto/public/logoNow.png" alt="LOGO">
                                 </img>
                             </a>
                             {/* BOTON RESPONSIVE */}
