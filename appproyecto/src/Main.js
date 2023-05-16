@@ -136,7 +136,7 @@ export default class Main extends React.Component {
                         <div className="container-fluid">
                             {/* LOGO */}
                             <a className="navbar-brand" href="/">
-                                <img src="/appproyecto/public/logoNow.png" alt="LOGO">
+                                <img src="./logoNow.png" alt="LOGO">
                                 </img>
                             </a>
                             {/* BOTON RESPONSIVE */}
@@ -146,7 +146,7 @@ export default class Main extends React.Component {
 
                             {/* OPCIONES MENU */}
                             <div className="collapse navbar-collapse" id="navbarScroll">
-                                <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+                                <ul className="navbar-nav bg-dark me-auto my-2 my-lg-0 navbar-nav-scroll">
                                     <li className="nav-item">
                                         <a className="nav-link active" aria-current="page" href="/">Inicio</a>
                                     </li>
