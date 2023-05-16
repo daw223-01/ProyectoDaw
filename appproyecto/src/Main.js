@@ -194,6 +194,10 @@ export default class Main extends React.Component {
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
                     </div>
+                    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+                    <df-messenger intent="WELCOME" chat-title="Now!" agent-id="d097bd15-a81d-49f0-9c8b-6f5158b5eaca"
+                        language-code="es"></df-messenger>
+
                 </div>
 
                 {/* FOOTER */}
