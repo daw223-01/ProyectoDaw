@@ -69,19 +69,18 @@ export default class App extends React.Component {
   render() {
     return (
       <div className='bienvenida container-fluid h-100'>
-        <div className="row align-items-center justify-content-around h-100">
-          <div className="card col-lg-3 col-md-6">
-            <form className='registro login' onSubmit={this.handleSubmit.bind(this)}>
+        <div className="row align-items-center justify-content-around h-100 p-5">
+          <div className="card col-sm-7 col-lg-4 col-xl-3 col-md-5 mb-5">
+            <form className='registro login d-flex flex-column p-3 gap-2' onSubmit={this.handleSubmit.bind(this)}>
               <h2>LOGIN</h2>
-
               <input type='text' name='user' placeholder='Email' className='form-control' required></input>
               <input type='password' name='password' placeholder='Password' className='form-control' required></input>
-              <input type="submit" className='btn btn-outline-light'></input>
+              <input type="submit" className='btn btn-outline-light align-self-center'></input>
             </form>
           </div>
 
-          <div className="card col-lg-3 col-md-6">
-            <form className='registro signup' onSubmit={this.handleSubmit.bind(this)}>
+          <div className="card col-sm-7 col-lg-4 col-xl-3 col-md-5">
+            <form className='registro signup d-flex flex-column p-3 gap-2' onSubmit={this.handleSubmit.bind(this)}>
               <h2>SIGN UP</h2>
 
               <input type='text' name='user' placeholder='User name' className='form-control' required></input>
@@ -90,7 +89,7 @@ export default class App extends React.Component {
               <input type='email' name='email' placeholder='Email' className='form-control' required></input>
               <input type='password' name='password' placeholder='Password' className='password form-control' required></input>
               <input type='password' name='repeat-password' placeholder='Repeat Password' className='form-control' required onChange={this.comprobarPassword}></input>
-              <input type="submit" className='btn btn-outline-light'></input>
+              <input type="submit" className='btn btn-outline-light align-self-center'></input>
             </form>
           </div>
         </div>
