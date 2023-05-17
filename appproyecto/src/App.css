@@ -1,6 +1,8 @@
 .bienvenida{
   background: url("/var/www/html/ProyectoDaw/appproyecto/public/fondoNow.png");
-
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card{
@@ -19,17 +21,13 @@ h2{
 
 
 input:not(input[type=submit]){
-  align-self: center;
+
   background:none;
   color: black;
   border: 1px solid white;
   
 }
-
-.df-messenger-wrapper{
-  display: none;
-}
-
-input::placeholder{
-  color: rgb(255, 255, 255);
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: white;
+            opacity: 1; /* Firefox */
 }

@@ -67,6 +67,9 @@ export default class App extends React.Component {
   }
 
   render() {
+//OCULATR CHATBOT EN ESTA PAGINA
+let chatBot = document.querySelector("df-messenger");
+chatBot.style.display = "none";
     return (
       <div className='bienvenida container-fluid h-100'>
         <div className="row align-items-center justify-content-around h-100 p-5">

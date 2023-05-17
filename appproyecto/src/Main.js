@@ -136,7 +136,7 @@ export default class Main extends React.Component {
                         <div className="container-fluid">
                             {/* LOGO */}
                             <a className="navbar-brand" href="/">
-                                <img src="logoNow.png" alt="LOGO"></img>
+                                <img src="blob:https://educajcyl-my.sharepoint.com/390ceeb0-9954-4b38-bf4f-7ab006904add" alt="LOGO"></img>
                             </a>
                             {/* BOTON RESPONSIVE */}
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,7 +145,7 @@ export default class Main extends React.Component {
 
                             {/* OPCIONES MENU */}
                             <div className="collapse navbar-collapse" id="navbarScroll">
-                                <ul className="navbar-nav bg-dark me-auto my-2 my-lg-0 navbar-nav-scroll">
+                                <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                                     <li className="nav-item">
                                         <a className="nav-link active" aria-current="page" href="/">Inicio</a>
                                     </li>
