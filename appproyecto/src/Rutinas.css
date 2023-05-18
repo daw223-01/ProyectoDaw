@@ -1,10 +1,12 @@
-.card-title{
+.card-title {
     cursor: pointer
 }
-#rutinas > .btn.btn-primary{
+
+#rutinas>.btn.btn-primary {
     background-color: #ff8c00;
     border: none;
 }
-#rutinas >  .btn.btn-primary:hover{
+
+#rutinas>.btn.btn-primary:hover {
     background-color: #ffad49;
 }
