@@ -27,6 +27,6 @@ footer{
     background-color: gray;
 }
 
-button.nav-link.btn.btn-outline-secondary:hover {
+.btn-outline-secondary:hover {
     background-color: rgb(255, 163, 43);
 }

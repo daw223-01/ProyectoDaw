@@ -18,13 +18,13 @@ h2 {
 }
 
 
-input:not(input[type=submit]) {
+.registro > input:not(input[type=submit]) {
   background: none;
   color: black;
   border: 1px solid white;
 }
 
-.form-control::placeholder {
+.registro > .form-control::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
   opacity: 1;

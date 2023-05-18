@@ -1,10 +1,10 @@
 .card-title{
     cursor: pointer
 }
-.btn-primary{
+.btn.btn-primary{
     background-color: #ff8c00;
     border: none;
 }
-.btn-primary:hover{
+.btn.btn-primary:hover{
     background-color: #ffad49;
 }
