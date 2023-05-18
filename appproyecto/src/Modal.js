@@ -86,7 +86,7 @@ export default class Modal extends React.Component {
                                         {listaRutinas}
                                     </select>
                                     <input type="number" className="form-control col-4 inpModal" placeholder="Numero de rondas"></input>
-                                    <input type="number" className="form-control col-4 inpModal" placeholder="Tiempo por ronda"></input>
+                                    <input type="number" className="form-control col-4 inpModal" placeholder="Tiempo por ronda en segundos"></input>
                                     <input type="number" className="form-control col-4 inpModal" placeholder="Numero de repeticiones"></input>
                                 </div>
                             </form>
