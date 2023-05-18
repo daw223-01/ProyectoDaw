@@ -1,33 +1,32 @@
-.bienvenida{
-  background: url("/var/www/html/ProyectoDaw/appproyecto/public/fondoNow.png");
+.bienvenida {
+  background: url("https://i.pinimg.com/originals/d3/c9/12/d3c9125d2422196687d99dbef72655e6.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.card{
+.card {
   border-radius: 1rem;
   backdrop-filter: blur(5px);
   border: 2px solid white;
   background-color: rgb(255, 255, 255, .1);
 }
 
-
-
-h2{
+h2 {
   align-self: center;
   color: white;
 }
 
 
-input:not(input[type=submit]){
-
-  background:none;
+input:not(input[type=submit]) {
+  background: none;
   color: black;
   border: 1px solid white;
-  
 }
-.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: white;
-            opacity: 1; /* Firefox */
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1;
+  /* Firefox */
 }
