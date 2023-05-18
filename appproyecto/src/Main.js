@@ -192,19 +192,64 @@ export default class Main extends React.Component {
                     <div id="content" className="col-11 container-fluid justify-content-center">
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
-                    </div>                    
+                    </div>
 
                 </div>
 
                 {/* FOOTER */}
                 <div className="row">
-                    <footer className="col-12">
-                        Footer
+                    <footer class="bg-dark text-center text-white">
+                        {/* Grid container*/}
+                        <div class="container p-4 pb-0">
+                            {/*Section: Social media*/}
+                            <section class="mb-4">
+
+                                {/* <!-- Twitter --> */}
+                                <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/Raulbs1099" role="button">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+
+                                {/* <!-- Instagram --> */}
+                                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/raulbs10/?hl=es" role="button">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                                {/* <!-- Linkedin --> */}
+                                <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/raulbragadosanz/" role="button">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+
+                                {/* <!-- Github --> */}
+                                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/daw223-01" role="button">
+                                    <i class="fab fa-github"></i>
+                                </a>
+
+                                {/* <!-- Tiktok --> */}
+                                <a class="btn btn-outline-light btn-floating m-1" href="https://www.tiktok.com/@raulbs10" role="button">
+                                    <i class="fab fa-github"></i>
+                                </a>
+
+                                {/* <!-- Twitch --> */}
+                                <a class="btn btn-outline-light btn-floating m-1" href="https://www.twitch.tv/raulbs10?lang=es" role="button">
+                                    <i class="fab fa-github"></i>
+                                </a>
+
+                            </section>
+
+                        </div>
+
+
+                        {/*Copyright*/}
+                        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                            © 2023 Copyright:
+                            <a class="text-white" href="https://github.com/daw223-01/ProyectoDaw.git">Now Exercise</a>
+                        </div>
+
                     </footer>
                 </div>
 
             </div>
-        )
+        );
     }
 }
 
