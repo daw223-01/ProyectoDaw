@@ -136,7 +136,7 @@ export default class Main extends React.Component {
                         <div className="container-fluid">
                             {/* LOGO */}
                             <a className="navbar-brand" href="/">
-                                <img src="blob:https://educajcyl-my.sharepoint.com/390ceeb0-9954-4b38-bf4f-7ab006904add" alt="LOGO"></img>
+                                <img src="https://i.pinimg.com/originals/d2/e0/dd/d2e0dd3a971ac6badba76f1b7009d586.png" width="50" height="45" alt="LOGO"></img>
                             </a>
                             {/* BOTON RESPONSIVE */}
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
