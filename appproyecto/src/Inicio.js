@@ -31,24 +31,28 @@ export default class Inicio extends React.Component {
         return (
             <div className="container-fluid vh-100 pt-5">
                 <h2>{mensaje}</h2>
-                <div id="canales" className="row h-50">
+                <div id="canales" className="row">
                     <h3>MEJORES RECOMENDACIONES DE YOUTUBE</h3>
+
                     <div className="card bg-transparent col-md-3 col-12 border border-light me-5">
                         <div className="card-body">
                             <h2 className="card-title">Sergio Peinado</h2>
                         </div>
+                        <img class="card-image" src="https://i0.wp.com/www.entrenaconsergiopeinado.com/wp-content/uploads/2015/04/sergio-png.png?fit=300%2C300&ssl=1"></img>
                     </div>
 
                     <div className="card bg-transparent col-md-3 col-12 border border-light me-5">
                         <div className="card-body">
                             <h2 className="card-title">Buff Academy</h2>
                         </div>
+                        <img class="card-image" src="https://i0.wp.com/www.entrenaconsergiopeinado.com/wp-content/uploads/2015/04/sergio-png.png?fit=300%2C300&ssl=1"></img>
                     </div>
 
                     <div className="card bg-transparent col-md-3 col-12 border border-light">
                         <div className="card-body">
                             <h2 className="card-title">Sergio Peinado</h2>
                         </div>
+                        <img class="card-image" src="https://i0.wp.com/www.entrenaconsergiopeinado.com/wp-content/uploads/2015/04/sergio-png.png?fit=300%2C300&ssl=1"></img>
                     </div>
                 </div>
             </div>
