@@ -32,19 +32,19 @@ export default class Inicio extends React.Component {
         let mensaje = this.randomMessage();
 
         return (
-            <div className="container-fluid">
+            <div className="container-fluid vh-100 pt-5">
                 <h2>{mensaje}</h2>
-                <div id="canales" className="row">
+                <div id="canales" className="row h-20">
                     <h3>MEJORES RECOMENDACIONES DE YOUTUBE</h3>
-                    <div className="card bg-transparent col-md-4 col-12 border border-light">
+                    <div className="card bg-transparent col-md-4 col-12 border border-light mr-5">
                         <div className="card-body">
                             <h2 className="card-title">Sergio Peinado</h2>
                         </div>
                     </div>
 
-                    <div className="card bg-transparent col-md-4 col-12 border border-light">
+                    <div className="card bg-transparent col-md-4 col-12 border border-light mr-5">
                         <div className="card-body">
-                            <h2 className="card-title">Sergio Peinado</h2>
+                            <h2 className="card-title">Buff Academy</h2>
                         </div>
                     </div>
 
