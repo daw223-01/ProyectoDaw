@@ -30,3 +30,10 @@ footer{
 .btn-outline-secondary:hover {
     background-color: rgb(255, 163, 43);
 }
+
+.busquedaEj > .form-control::placeholder{
+    color: white;
+}
+.busquedaEj > .form-control{
+    color: white;
+}

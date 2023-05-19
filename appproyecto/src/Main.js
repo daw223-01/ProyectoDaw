@@ -166,7 +166,7 @@ export default class Main extends React.Component {
                                 </ul>
 
                                 {/* BARRA DE BUSQUEDA */}
-                                <form className="d-flex flex-row" role="search">
+                                <form className="busquedaEj d-flex flex-row" role="search">
                                     <div>
                                         <input type="text" className="form-control inputBusqueda" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
                                         </input>

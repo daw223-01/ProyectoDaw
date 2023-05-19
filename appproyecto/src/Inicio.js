@@ -1,10 +1,59 @@
 import React from "react";
+import "./Inicio.css";
 
-export default class Inicio extends React.Component{
-    render(){
-        return(
-            <div>
-                Inicio
+export default class Inicio extends React.Component {
+
+    randomMessage() {
+        // Generar un número aleatorio entre 1 y 4
+        let numeroAleatorio = Math.floor(Math.random() * 4) + 1;
+        let msn = "";
+        let userName = localStorage.getItem("username");
+
+        switch (numeroAleatorio) {
+            case 1:
+                msn = "Me alegra verte por aquí, ";
+                break;
+
+            case 2:
+                msn = "Buenas, qué hay, ";
+                break;
+
+            case 3:
+                msn = "Bienvenido/a, ";
+                break;
+
+            default:
+                break;
+        }
+
+        return msn+userName+"!";
+    }
+    render() {
+        let mensaje = this.randomMessage();
+
+        return (
+            <div className="container-fluid">
+                <h2>{mensaje}</h2>
+                <div id="canales" className="row">
+                    <h3>MEJORES RECOMENDACIONES DE YOUTUBE</h3>
+                    <div className="card bg-transparent col-md-4 col-12 border border-light">
+                        <div className="card-body">
+                            <h2 className="card-title">Sergio Peinado</h2>
+                        </div>
+                    </div>
+
+                    <div className="card bg-transparent col-md-4 col-12 border border-light">
+                        <div className="card-body">
+                            <h2 className="card-title">Sergio Peinado</h2>
+                        </div>
+                    </div>
+
+                    <div className="card bg-transparent col-md-4 col-12 border border-light">
+                        <div className="card-body">
+                            <h2 className="card-title">Sergio Peinado</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
