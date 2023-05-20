@@ -1,5 +1,8 @@
 import React from "react";
 import "./Inicio.css";
+import sergio from "./sergio.png";
+import patry from "./patry.png";
+import buff from "./buff.png";
 
 export default class Inicio extends React.Component {
 
@@ -40,7 +43,7 @@ export default class Inicio extends React.Component {
                                 <a href="https://www.youtube.com/@EntrenaSergioPeinado" target="_blank">Sergio Peinado</a>
                             </h5>
                         </div>
-                        <img class="card-image" src="./sergio.png" ></img>
+                        <img class="card-image" src={sergio} ></img>
 
                     </div>
 
@@ -50,7 +53,7 @@ export default class Inicio extends React.Component {
                                 <a href="https://www.youtube.com/GymVirtual" target="_blank">GymVirtual</a>
                             </h5>
                         </div>
-                        <img class="card-image" src="./patry.png"></img>
+                        <img class="card-image" src={patry}></img>
                     </div>
 
                     <div className="card bg-transparent col-md-3 col-12 border border-2 border-light">
@@ -59,7 +62,7 @@ export default class Inicio extends React.Component {
                                 <a href="https://www.youtube.com/@buff-academy" target="_blank">Buff Academy</a>
                             </h5>
                         </div>
-                        <img class="card-image" src="./buff.png"></img>
+                        <img class="card-image" src={buff}></img>
                     </div>
                 </div>
             </div >
