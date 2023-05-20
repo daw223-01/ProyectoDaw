@@ -297,7 +297,7 @@ class DatosRutina extends React.Component {
                 <div class="col text-wrap me-2 p-1">{datosRutina[element].rondas}</div>
                 <div class="col text-wrap me-2 p-1">{datosRutina[element].repeticiones}</div>
                 <div class="col text-wrap me-2 p-1">{datosRutina[element].tiempo}</div>
-                <button type="button" className="btn btn-outline-danger text-wrap" onClick={this.deleteEjRutina.bind(this)}>Eliminar</button>
+                <button type="button" className="col btn btn-outline-danger text-wrap" onClick={this.deleteEjRutina.bind(this)}>Eliminar</button>
             </div>
         ));
 
@@ -324,7 +324,7 @@ class DatosRutina extends React.Component {
                                 <div class="row border-bottom">
                                     <div class="col text-wrap me-2 p-1">Nombre del Ejercicio</div>
                                     <div class="col text-wrap me-2 p-1">Rondas</div>
-                                    <div class="col text-wrap me-2 p-1">Repeticiones/Ronda</div>
+                                    <div class="col text-wrap me-2 p-1">Repeticiones/ Ronda</div>
                                     <div class="col text-wrap me-2 p-1">Tiempo</div>
                                 </div>
                                 {this.showEjerciciosRutina()}
