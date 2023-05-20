@@ -254,9 +254,8 @@ export default class Main extends React.Component {
 
 
                         {/*Copyright*/}
-                        <div class="row text-center p-3 text-bg-secondary">
-                            © 2023 Copyright:
-                            <a class="text-white" href="https://github.com/daw223-01/ProyectoDaw.git">Now Exercise</a>
+                        <div class="row text-center p-3 text-bg-secondary d-flex align-items-center justify-content-center">
+                            <div className="text-wrap">© 2023 Copyright:<a class="text-white" href="https://github.com/daw223-01/ProyectoDaw.git">Now Exercise</a></div>
                         </div>
 
                     </footer>

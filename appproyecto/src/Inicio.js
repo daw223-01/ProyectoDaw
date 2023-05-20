@@ -37,7 +37,7 @@ export default class Inicio extends React.Component {
                 <div id="canales" className="row">
                     <h4>MEJORES RECOMENDACIONES DE YOUTUBE</h4>
 
-                    <div className="card bg-transparent col-md-3 col-12 border border-2 border-light me-5">
+                    <div className="card shadow bg-transparent col-md-3 col-7 border border-3 border-light me-5 mb-5">
                         <div className="card-body">
                             <h5 className="card-title fst-italic fw-bolder">
                                 <a href="https://www.youtube.com/@EntrenaSergioPeinado" target="_blank">Sergio Peinado</a>
@@ -47,16 +47,16 @@ export default class Inicio extends React.Component {
 
                     </div>
 
-                    <div className="card bg-transparent col-md-3 col-12 border border-2 border-light me-5">
+                    <div className="card shadow bg-transparent col-md-3 col-7 border border-3 border-light me-5 mb-5">
                         <div className="card-body">
                             <h5 className="card-title fst-italic fw-bolder">
                                 <a href="https://www.youtube.com/GymVirtual" target="_blank">GymVirtual</a>
                             </h5>
                         </div>
-                        <img class="card-image" src={patry}></img>
+                        <img class="card-image w-75" src={patry}></img>
                     </div>
 
-                    <div className="card bg-transparent col-md-3 col-12 border border-2 border-light">
+                    <div className="card shadow bg-transparent col-md-3 col-7 border border-3 border-light mb-5">
                         <div className="card-body">
                             <h5 className="card-title fst-italic fw-bolder">
                                 <a href="https://www.youtube.com/@buff-academy" target="_blank">Buff Academy</a>
