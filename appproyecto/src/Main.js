@@ -96,7 +96,7 @@ export default class Main extends React.Component {
         let inputBusqueda = document.querySelector(".inputBusqueda");
         inputBusqueda.value = ejercicio.nombre;
 
-        let url = "/ejercicios/" + inputBusqueda;
+        let url = "/ejercicios/" + ejercicio.nombre;
         window.location.href = url;
     }
 
