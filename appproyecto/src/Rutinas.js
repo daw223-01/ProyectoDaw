@@ -292,11 +292,11 @@ class DatosRutina extends React.Component {
         let datosRutina = this.props.datosRutina;
 
         let lista = Object.keys(datosRutina).map(element => (
-            <div class="d-flex flex-row border-bottom infoRutinasEj">
-                <div class="text-center text-wrap me-2 p-1">{datosRutina[element].nomEjercicio}</div>
-                <div class="text-center text-wrap me-2 p-1">{datosRutina[element].rondas}</div>
-                <div class="text-center text-wrap me-2 p-1">{datosRutina[element].repeticiones}</div>
-                <div class="text-center text-wrap me-2 p-1">{datosRutina[element].tiempo}</div>
+            <div class="row border-bottom">
+                <div class="col text-wrap me-2 p-1">{datosRutina[element].nomEjercicio}</div>
+                <div class="col text-wrap me-2 p-1">{datosRutina[element].rondas}</div>
+                <div class="col text-wrap me-2 p-1">{datosRutina[element].repeticiones}</div>
+                <div class="col text-wrap me-2 p-1">{datosRutina[element].tiempo}</div>
                 <button type="button" className="btn btn-outline-danger text-wrap" onClick={this.deleteEjRutina.bind(this)}>Eliminar</button>
             </div>
         ));
@@ -321,11 +321,11 @@ class DatosRutina extends React.Component {
                         </div>
                         <div className="modal-body">
                             <form className="container-fluid">
-                                <div class="d-flex flex-row border-bottom">
-                                    <div class="text-center text-wrap me-2 p-1">Nombre del Ejercicio</div>
-                                    <div class=" text-wrap me-2 p-1">Rondas</div>
-                                    <div class="text-wrap me-2 p-1">Repeticiones/Ronda</div>
-                                    <div class="text-wrap me-2 p-1">Tiempo</div>
+                                <div class="row border-bottom">
+                                    <div class="col text-wrap me-2 p-1">Nombre del Ejercicio</div>
+                                    <div class="col text-wrap me-2 p-1">Rondas</div>
+                                    <div class="col text-wrap me-2 p-1">Repeticiones/Ronda</div>
+                                    <div class="col text-wrap me-2 p-1">Tiempo</div>
                                 </div>
                                 {this.showEjerciciosRutina()}
                             </form>
