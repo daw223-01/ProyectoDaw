@@ -39,7 +39,7 @@ export default class Inicio extends React.Component {
                 <h2 className="mb-3 fw-bolder">{mensaje}</h2>
                 {/* CANALES DE YT */}
                 <div id="canales" className="row mb-5">
-                    <h4>MEJORES RECOMENDACIONES DE YOUTUBE</h4>
+                    <h4>MEJORES CANALES DE YOUTUBE</h4>
 
                     <div className="card shadow bg-transparent col-md-3 col-7 border border-3 border-light me-5 mb-5">
                         <div className="card-body">
@@ -72,6 +72,8 @@ export default class Inicio extends React.Component {
 
                 {/* PAGINAS DE NUTRICIÓN */}
                 <div id="nutricion" className="row mb-3">
+                    <h4>MEJORES OPCIONES DE NUTRICIÓN DEPORTIVA</h4>
+
                     {/* MYPROTEIN */}
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
                         <div className="row g-0">
@@ -83,7 +85,7 @@ export default class Inicio extends React.Component {
                                 </div>
                             </div>
                             <div className="col-7">
-                                <img class="card-image" src={mp}></img>
+                                <img class="card-image w-75" src={mp}></img>
                             </div>
                         </div>
                     </div>
@@ -100,7 +102,7 @@ export default class Inicio extends React.Component {
                                 </div>
                             </div>
                             <div className="col-7">
-                                <img class="card-image" src={proz}></img>
+                                <img class="card-image w-75" src={proz}></img>
                             </div>
                         </div>
                     </div>
@@ -116,7 +118,7 @@ export default class Inicio extends React.Component {
                                 </div>
                             </div>
                             <div className="col-7">
-                                <img class="card-image" src={hsn}></img>
+                                <img class="card-image w-75" src={hsn}></img>
                             </div>
                         </div>
                     </div>
