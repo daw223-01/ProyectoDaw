@@ -23,7 +23,7 @@ export default class App extends React.Component {
     let repPassword = element.target.value;
     if (repPassword != password) {
       // element.target.style.background = "rgba(255, 69, 29, 0.3)";
-      element.target.classList = "border-danger";
+      element.target.classList = "border border-danger";
       btn.disabled = true;
     } else {
       // element.target.style.background = "rgba(29, 255, 84, 0.3)";

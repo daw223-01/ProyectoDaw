@@ -6,24 +6,26 @@ header {
     background-color: rgb(219, 103, 103);
 }
 
-.contenedorNombres{
+.contenedorNombres {
     overflow-y: auto;
     height: 100%;
     z-index: 99;
 }
-.resultBusqueda{
+
+.resultBusqueda {
     cursor: pointer;
 }
 
 #navBar {
     background-color: rgb(219, 103, 103);
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
 
-footer{
+footer {
     background-color: gray;
 }
 
@@ -31,6 +33,12 @@ footer{
     background-color: rgb(255, 163, 43);
 }
 
-.busquedaEj > .inputBusqueda::placeholder{
+.busquedaEj>.inputBusqueda::placeholder {
     color: white;
+}
+
+/*CHATBOT*/
+df-messenger::part(avatar) {
+    background-image: url('https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800');
+    /* Otros estilos opcionales */
 }

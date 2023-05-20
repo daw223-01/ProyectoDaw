@@ -47,11 +47,11 @@ export default class Perfil extends React.Component {
         let newContraseña = document.querySelector("#nuevaContraseña").value;
         let btn = document.querySelector("#contraseña input[type=submit]");
         if (repContraseña != newContraseña) {
-            element.target.classList.toggle("border-danger");
+            element.target.classList = "border border-danger";
             // element.target.style.background = "rgba(255, 69, 29, 0.3)";
             btn.disabled = true;
         } else {
-            element.target.classList.toggle("border-success");
+            element.target.classList = "border-success";
             // element.target.style.background = "rgba(29, 255, 84, 0.3)";
             btn.disabled = false;
         }
