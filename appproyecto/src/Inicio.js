@@ -32,7 +32,7 @@ export default class Inicio extends React.Component {
         let mensaje = this.randomMessage();
 
         return (
-            <div className="container-fluid pt-5">
+            <div className="container-fluid p-5">
                 <h2 className="mb-3 fw-bolder">{mensaje}</h2>
                 <div id="canales" className="row">
                     <h4>MEJORES RECOMENDACIONES DE YOUTUBE</h4>

@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import fondo from "./fondoNow.png";
 
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
@@ -21,10 +22,12 @@ export default class App extends React.Component {
     let btn = document.querySelector(".signup input[type=submit]");
     let repPassword = element.target.value;
     if (repPassword != password) {
-      element.target.style.background = "rgba(255, 69, 29, 0.3)";
+      // element.target.style.background = "rgba(255, 69, 29, 0.3)";
+      element.target.classList = "border-danger";
       btn.disabled = true;
     } else {
-      element.target.style.background = "rgba(29, 255, 84, 0.3)";
+      // element.target.style.background = "rgba(29, 255, 84, 0.3)";
+      element.target.classList = "border-success";
       btn.disabled = false;
     }
   }
@@ -72,7 +75,7 @@ export default class App extends React.Component {
     chatBot.style.display = "none";
     return (
       <div className='bienvenida container-fluid h-100'>
-        <div className="row align-items-center justify-content-around h-100 p-5">
+        <div className="contenidoFormularios row align-items-center justify-content-around h-100 p-5">
           <div className="card col-sm-7 col-lg-4 col-xl-3 col-md-5 mb-5">
             <form className='registro login d-flex flex-column p-3 gap-4' onSubmit={this.handleSubmit.bind(this)}>
               <h2>LOGIN</h2>

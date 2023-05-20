@@ -93,7 +93,7 @@ export default class Perfil extends React.Component {
             <div id="datosPersonales" className="container-fluid p-5">
                 <div className="row">
                     {/* FORMULARIO DE DATOS DE USUARIO */}
-                    <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="col-9 col-md-7 col-lg-4 d-flex flex-column align-items-left">
+                    <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="col-11 col-md-7 col-lg-4 d-flex flex-column align-items-left">
                         <div className="mb-3">
                             <h2 >Datos personales</h2>
                         </div>
@@ -125,7 +125,7 @@ export default class Perfil extends React.Component {
                     </form>
 
                     {/* FORMULARIO DE CONTRASEÑA DE USUARIO */}
-                    <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="col-9 col-md-7 col-lg-4 d-flex flex-column align-items-left">
+                    <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="col-11 col-md-7 col-lg-4 d-flex flex-column align-items-left">
                         <div className="mb-3">
                             <h2>Contraseña</h2>
                         </div>

@@ -1,5 +1,5 @@
-.bienvenida {
-  background: url("https://i.pinimg.com/originals/d3/c9/12/d3c9125d2422196687d99dbef72655e6.png");
+.bienvenida > .contenidoFormularios {
+  background: url("fondoNow.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

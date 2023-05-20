@@ -80,7 +80,7 @@ export default class Rutinas extends React.Component {
 
         return (
 
-            <div id="rutinas" className="d-flex flex-column p-2">
+            <div id="rutinas" className="d-flex flex-column p-5">
                 {/* MODAL PARA AÑADIR NUEVAS RUTINAS */}
                 <NuevaRutina></NuevaRutina>
                 <div className="navbar">
