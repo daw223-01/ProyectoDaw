@@ -135,7 +135,7 @@ export default class Main extends React.Component {
             <div id="main" className="container-fluid min-vh-100 d-flex flex-column">
                 {/* NAVBAR HEADER*/}
                 <div className="row">
-                    <nav id="navBar" className="navbar navbar-expand-lg bg-body-tertiary w-100" data-bs-theme="dark">
+                    <nav id="navBar" className="navbar navbar-expand-lg bg-body-tertiary w-100 p-3" data-bs-theme="dark">
                         <div className="container-fluid">
                             {/* LOGO */}
                             <a className="navbar-brand" href="/">
@@ -192,7 +192,7 @@ export default class Main extends React.Component {
                 {/* CONTENIDO */}
                 <div className="row flex-fill">
 
-                    <div id="content" className="col-11 container-fluid justify-content-center">
+                    <div id="content" className="col-11 container-fluid">
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
                     </div>

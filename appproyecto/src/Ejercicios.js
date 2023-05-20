@@ -131,7 +131,7 @@ export default class Ejercicios extends React.Component {
         });
 
         return (
-            <div id="containerEjercicios" className="container-fuild p-4">
+            <div id="containerEjercicios" className="container-fuild p-4 d-flex justify-content-center">
                 <Modal datos={this.state.datosEj}></Modal>
                 <div className="row">
                     {lista}
