@@ -74,43 +74,50 @@ export default class Inicio extends React.Component {
                 <div id="nutricion" className="row mb-3">
                     {/* MYPROTEIN */}
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
-                        <div className="col-5">
-                            <div className="card-body">
-                                <h5 className="card-title fst-italic fw-bolder">
-                                    <a href="https://www.myprotein.es/" target="_blank">MyProtein</a>
-                                </h5>
+                        <div className="row g-0">
+                            <div className="col-4">
+                                <div className="card-body">
+                                    <h5 className="card-title fst-italic fw-bolder">
+                                        <a href="https://www.myprotein.es/" target="_blank">MyProtein</a>
+                                    </h5>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-7">
-                            <img class="card-image" src={mp}></img>
+                            <div className="col-7">
+                                <img class="card-image" src={mp}></img>
+                            </div>
                         </div>
                     </div>
 
                     {/* PROZIS */}
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
-                        <div className="col-5">
-                            <div className="card-body">
-                                <h5 className="card-title fst-italic fw-bolder">
-                                    <a href="https://www.prozis.com/es/es" target="_blank">MyProtein</a>
-                                </h5>
+                        <div className="row g-0">
+                            <div className="row g-0">
+                            </div><div className="col-4">
+                                <div className="card-body">
+                                    <h5 className="card-title fst-italic fw-bolder">
+                                        <a href="https://www.prozis.com/es/es" target="_blank">MyProtein</a>
+                                    </h5>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-7">
-                            <img class="card-image" src={proz}></img>
+                            <div className="col-7">
+                                <img class="card-image" src={proz}></img>
+                            </div>
                         </div>
                     </div>
 
                     {/* HSN */}
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
-                        <div className="col-5">
-                            <div className="card-body">
-                                <h5 className="card-title fst-italic fw-bolder">
-                                    <a href="https://www.hsnstore.com/" target="_blank">MyProtein</a>
-                                </h5>
+                        <div className="row g-0">
+                            <div className="col-4">
+                                <div className="card-body">
+                                    <h5 className="card-title fst-italic fw-bolder">
+                                        <a href="https://www.hsnstore.com/" target="_blank">MyProtein</a>
+                                    </h5>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-7">
-                            <img class="card-image" src={hsn}></img>
+                            <div className="col-7">
+                                <img class="card-image" src={hsn}></img>
+                            </div>
                         </div>
                     </div>
                 </div>
