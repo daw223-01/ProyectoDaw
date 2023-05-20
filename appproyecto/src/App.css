@@ -1,3 +1,6 @@
+.bienvenida {
+  background-color: #323232;
+}
 .bienvenida > .contenidoFormularios {
   background: url("fondoNow.png");
   background-size: cover;
