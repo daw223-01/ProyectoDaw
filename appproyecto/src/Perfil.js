@@ -90,11 +90,11 @@ export default class Perfil extends React.Component {
             contraseña: this.state.contraseña
         }
         return (
-            <div id="datosPersonales" className="container-fluid">
+            <div id="datosPersonales" className="container-fluid p-5">
                 <div className="row">
                     {/* FORMULARIO DE DATOS DE USUARIO */}
                     <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="col-9 col-md-7 col-lg-4 d-flex flex-column align-items-left">
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <h2 >Datos personales</h2>
                         </div>
 
@@ -119,37 +119,37 @@ export default class Perfil extends React.Component {
                             <input type="email" className="datosUsuario form-control" name="correo" defaultValue={usuario.correo}></input>
                         </div>
 
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <input type="submit" value="Confirmar cambios" className="btn btn-outline-light"></input>
                         </div>
                     </form>
 
                     {/* FORMULARIO DE CONTRASEÑA DE USUARIO */}
                     <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="col-9 col-md-7 col-lg-4 d-flex flex-column align-items-left">
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <h2>Contraseña</h2>
                         </div>
 
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <label className="form-label">Contraseña</label>
                             <input className="form-control" type="password" name="contraseña" defaultValue={usuario.contraseña} disabled></input>
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <label className="form-label">Nueva contraseña</label>
                             <input type="password" className="datosUsuario form-control" name="nuevaContraseña" id="nuevaContraseña"></input>
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <label className="form-label">Repite la nueva contraseña</label>
                             <input type="password" className="datosUsuario form-control" name="repNuevaContraseña" onChange={this.handleChange.bind(this)}></input>
                         </div>
 
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <input type="submit" value="Cambiar contraseña" className="btn btn-outline-light"></input>
                         </div>
                     </form>
                 </div>
 
-                <div className="row justify-content-start">
+                <div className="row">
                     {/* BOTON BORRAR CUENTA DE USUARIO */}
                     <button className="col-6 col-md-3 col-lg-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelCuenta">Borrar cuenta</button>
                 </div>

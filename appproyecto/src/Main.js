@@ -192,7 +192,7 @@ export default class Main extends React.Component {
                 {/* CONTENIDO */}
                 <div className="row flex-fill">
 
-                    <div id="content" className="col-11 container-fluid">
+                    <div id="content" className="container-fluid">
                         {/* AQUÍ SE RENDERIZAN LOS DIFERENTES COMPONENTES */}
                         <RouterProvider router={router} filtro={this.state.filtro}></RouterProvider>
                     </div>
