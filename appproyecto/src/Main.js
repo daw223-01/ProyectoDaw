@@ -95,6 +95,9 @@ export default class Main extends React.Component {
     verEjercicio(ejercicio) {
         let inputBusqueda = document.querySelector(".inputBusqueda");
         inputBusqueda.value = ejercicio.nombre;
+
+        let url = "/ejercicios/" + inputBusqueda;
+        window.location.href = url;
     }
 
     //FILTRO DE BÚSQUEDA DE EJERCICIOS
@@ -122,7 +125,7 @@ export default class Main extends React.Component {
 
             //AL HACER CLICK EN UN RESULTADO, SE MUESTRAN LOS DATOS DE ESE EJERCICIO
             nombresEj = lista.map(ej =>
-                <label className="form-control resultBusqueda" onClick={() => this.verEjercicio(ej)}>
+                <label className="form-control resultBusqueda text-black bg-white" onClick={() => this.verEjercicio(ej)}>
                     {ej.nombre}
                 </label>
             );
@@ -168,7 +171,7 @@ export default class Main extends React.Component {
                                 {/* BARRA DE BUSQUEDA */}
                                 <form className="busquedaEj d-flex flex-row" role="search">
                                     <div>
-                                        <input type="text" className="form-control inputBusqueda" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
+                                        <input type="text" className="form-control inputBusqueda text-black bg-white" placeholder="Buscar ejercicio" onChange={this.ejerciciosInput.bind(this)}>
                                         </input>
                                         <div class="position-absolute d-flex flex-column contenedorNombres">
                                             {nombresEj}

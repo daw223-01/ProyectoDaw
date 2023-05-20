@@ -102,9 +102,8 @@ export default class Ejercicios extends React.Component {
         Object.keys(this.state.ej).map((element, i) => {
             //SABER SI LOS EJERCICIOS ESTÁN EL PALABRA DE BÚSQUEDA
             const containsInput = this.state.filtro.some((value) => {
-                return this.state.ej[element].nombre.toUpperCase() == value.toUpperCase() || this.state.ej[element].grupoMuscular.toUpperCase().includes(value.toUpperCase());
+                return this.state.ej[element].nombre.toUpperCase().includes(value.toUpperCase()) || this.state.ej[element].grupoMuscular.toUpperCase().includes(value.toUpperCase());
             });
-            console.log(containsInput);
 
             if (containsInput) {
                 lista.push(

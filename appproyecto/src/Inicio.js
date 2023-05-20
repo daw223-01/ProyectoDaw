@@ -29,8 +29,8 @@ export default class Inicio extends React.Component {
         let mensaje = this.randomMessage();
 
         return (
-            <div className="container-fluid vh-100 pt-5">
-                <h2>{mensaje}</h2>
+            <div className="container-fluid pt-5">
+                <h2 className="mb-3">{mensaje}</h2>
                 <div id="canales" className="row">
                     <h3>MEJORES RECOMENDACIONES DE YOUTUBE</h3>
 
@@ -43,9 +43,9 @@ export default class Inicio extends React.Component {
 
                     <div className="card bg-transparent col-md-3 col-12 border border-light me-5">
                         <div className="card-body">
-                            <h2 className="card-title">Buff Academy</h2>
+                            <h2 className="card-title">Gym Virtual</h2>
                         </div>
-                        <img class="card-image" src="https://i0.wp.com/www.entrenaconsergiopeinado.com/wp-content/uploads/2015/04/sergio-png.png?fit=300%2C300&ssl=1"></img>
+                        <img class="card-image" src="https://www.clara.es/medio/2019/06/13/patry_c1a33801_267x459.png"></img>
                     </div>
 
                     <div className="card bg-transparent col-md-3 col-12 border border-light">
