@@ -202,8 +202,8 @@ export default class Main extends React.Component {
                 {/* FOOTER */}
                 <div className="row">
                     <footer class="bg-dark text-center text-white">
-                        <div class="container p-4 pb-0">
-                            <section class="mb-4">
+                        <div class="container">
+                            <section class="">
 
                                 {/* <!-- Twitter --> */}
                                 <a class="btn btn-outline-light btn-floating rounded-circle border border-2 m-2" href="https://twitter.com/Raulbs1099" role="button">
@@ -254,7 +254,7 @@ export default class Main extends React.Component {
 
 
                         {/*Copyright*/}
-                        <div class="row text-center p-3 text-bg-secondary d-flex align-items-center justify-content-center">
+                        <div class="row text-center p-1 text-bg-secondary d-flex align-items-center justify-content-center">
                             <div className="text-wrap">© 2023 Copyright:<a class="text-white" href="https://github.com/daw223-01/ProyectoDaw.git">Now Exercise</a></div>
                         </div>
 

@@ -47,10 +47,12 @@ export default class Perfil extends React.Component {
         let newContraseña = document.querySelector("#nuevaContraseña").value;
         let btn = document.querySelector("#contraseña input[type=submit]");
         if (repContraseña != newContraseña) {
-            element.target.style.background = "rgba(255, 69, 29, 0.3)";
+            element.target.classList.toggle("border-danger");
+            // element.target.style.background = "rgba(255, 69, 29, 0.3)";
             btn.disabled = true;
         } else {
-            element.target.style.background = "rgba(29, 255, 84, 0.3)";
+            element.target.classList.toggle("border-success");
+            // element.target.style.background = "rgba(29, 255, 84, 0.3)";
             btn.disabled = false;
         }
 
@@ -71,7 +73,7 @@ export default class Perfil extends React.Component {
     }
 
     //FUNCION ELIMINAR CUENTA
-    async eliminarCuenta(){
+    async eliminarCuenta() {
         let respuesta = await delCuenta();
 
         alert(respuesta);
@@ -88,65 +90,70 @@ export default class Perfil extends React.Component {
             contraseña: this.state.contraseña
         }
         return (
-            <div id="datosPersonales" className="d-flex justify-content-start align-items-center">
-                {/* FORMULARIO DE DATOS DE USUARIO */}
-                <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="m-3 d-flex flex-column align-items-left">
-                    <div className="mb-2">
-                        <h2 >Datos personales</h2>
-                    </div>
-
-                    <div className="row mb-3">
-                        <div className="col">
-                            <label className="form-label">Nombre</label>
-                            <input type="text" className="datosUsuario form-control" name="nombre" defaultValue={usuario.nombre}></input>
+            <div id="datosPersonales" className="container-fluid">
+                <div className="row">
+                    {/* FORMULARIO DE DATOS DE USUARIO */}
+                    <form id="datos" onSubmit={this.handleSubmit.bind(this)} className="col-9 col-md-7 col-lg-4 d-flex flex-column align-items-left">
+                        <div className="mb-2">
+                            <h2 >Datos personales</h2>
                         </div>
-                        <div className="col">
-                            <label className="form-label">Apellidos</label>
-                            <input type="text" className="datosUsuario form-control" name="apellidos" defaultValue={usuario.apellidos}></input>
+
+                        <div className="row mb-3">
+                            <div className="col">
+                                <label className="form-label">Nombre</label>
+                                <input type="text" className="datosUsuario form-control" name="nombre" defaultValue={usuario.nombre}></input>
+                            </div>
+                            <div className="col">
+                                <label className="form-label">Apellidos</label>
+                                <input type="text" className="datosUsuario form-control" name="apellidos" defaultValue={usuario.apellidos}></input>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="mb-3">
-                        <label className="form-label">Nombre de usuario</label>
-                        <input type="text" className="datosUsuario form-control" name="username" defaultValue={usuario.username} disabled></input>
-                    </div>
+                        <div className="mb-3">
+                            <label className="form-label">Nombre de usuario</label>
+                            <input type="text" className="datosUsuario form-control" name="username" defaultValue={usuario.username} disabled></input>
+                        </div>
 
-                    <div className="mb-3">
-                        <label className="form-label">Correo</label>
-                        <input type="email" className="datosUsuario form-control" name="correo" defaultValue={usuario.correo}></input>
-                    </div>
+                        <div className="mb-3">
+                            <label className="form-label">Correo</label>
+                            <input type="email" className="datosUsuario form-control" name="correo" defaultValue={usuario.correo}></input>
+                        </div>
 
-                    <div className="mb-2">
-                        <input type="submit" value="Confirmar cambios" className="btn btn-outline-light"></input>
-                    </div>
-                </form>
+                        <div className="mb-2">
+                            <input type="submit" value="Confirmar cambios" className="btn btn-outline-light"></input>
+                        </div>
+                    </form>
 
-                {/* FORMULARIO DE CONTRASEÑA DE USUARIO */}
-                <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="m-3 d-flex flex-column align-items-left">
-                    <div className="mb-2">
-                        <h2>Contraseña</h2>
-                    </div>
+                    {/* FORMULARIO DE CONTRASEÑA DE USUARIO */}
+                    <form id="contraseña" onSubmit={this.handleSubmit.bind(this)} className="col-9 col-md-7 col-lg-4 d-flex flex-column align-items-left">
+                        <div className="mb-2">
+                            <h2>Contraseña</h2>
+                        </div>
 
-                    <div className="mb-2">
-                        <label className="form-label">Contraseña</label>
-                        <input className="form-control" type="password" name="contraseña" defaultValue={usuario.contraseña} disabled></input>
-                    </div>
-                    <div className="mb-2">
-                        <label className="form-label">Nueva contraseña</label>
-                        <input type="password" className="datosUsuario form-control" name="nuevaContraseña" id="nuevaContraseña"></input>
-                    </div>
-                    <div className="mb-2">
-                        <label className="form-label">Repite la nueva contraseña</label>
-                        <input type="password" className="datosUsuario form-control" name="repNuevaContraseña" onChange={this.handleChange.bind(this)}></input>
-                    </div>
+                        <div className="mb-2">
+                            <label className="form-label">Contraseña</label>
+                            <input className="form-control" type="password" name="contraseña" defaultValue={usuario.contraseña} disabled></input>
+                        </div>
+                        <div className="mb-2">
+                            <label className="form-label">Nueva contraseña</label>
+                            <input type="password" className="datosUsuario form-control" name="nuevaContraseña" id="nuevaContraseña"></input>
+                        </div>
+                        <div className="mb-2">
+                            <label className="form-label">Repite la nueva contraseña</label>
+                            <input type="password" className="datosUsuario form-control" name="repNuevaContraseña" onChange={this.handleChange.bind(this)}></input>
+                        </div>
 
-                    <div className="mb-2">
-                        <input type="submit" value="Cambiar contraseña" className="btn btn-outline-light"></input>
-                    </div>
-                </form>
+                        <div className="mb-2">
+                            <input type="submit" value="Cambiar contraseña" className="btn btn-outline-light"></input>
+                        </div>
+                    </form>
+                </div>
 
-                {/* BOTON BORRAR CUENTA DE USUARIO */}
-                <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelCuenta">Borrar cuenta</button>
+                <div className="row justify-content-start">
+                    {/* BOTON BORRAR CUENTA DE USUARIO */}
+                    <button className="col-6 col-md-3 col-lg-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelCuenta">Borrar cuenta</button>
+                </div>
+
                 {/* MODAL PARA CONFIRMAR ELIMINACION */}
                 <div className="modal fade" id="modalDelCuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
@@ -242,7 +249,7 @@ async function actualizarInfo(numeroDatos, informacion) {
 }
 
 //BORRAR LA CUENTA DE USUARIO
-async function delCuenta(){
+async function delCuenta() {
     let usuario = localStorage.getItem("username");
 
     let options = {
@@ -253,13 +260,13 @@ async function delCuenta(){
         },
         body: JSON.stringify(usuario)
     }
-    let consulta = await fetch(ruta+"/delUser", options);
+    let consulta = await fetch(ruta + "/delUser", options);
 
     if (consulta.ok) {
         alert("Usuario borrado");
         localStorage.clear();
         window.location.reload();
-    }else{
+    } else {
         alert("Error al borrar");
     }
 }
