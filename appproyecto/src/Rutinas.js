@@ -326,6 +326,7 @@ class DatosRutina extends React.Component {
                                     <div class="col text-wrap me-2 p-1">Rondas</div>
                                     <div class="col text-wrap me-2 p-1">Repeticiones/ Ronda</div>
                                     <div class="col text-wrap me-2 p-1">Tiempo</div>
+                                    <div class="col text-wrap me-2 p-1"></div>
                                 </div>
                                 {this.showEjerciciosRutina()}
                             </form>
