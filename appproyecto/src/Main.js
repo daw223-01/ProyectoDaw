@@ -9,7 +9,7 @@ import Rutinas from "./Rutinas";
 /**RUTAS PARA USARSE EN LOS DIFERENTES ENTORNOS**/
 
 //RUTA DE PRODUCCION
-let ruta = "http://now-exercise.ddns.net/api";
+let ruta = "http://nowexercise.ddns.net/api";
 
 //RUTA DE DESARROLLO
 //let ruta = "http://localhost/api";
