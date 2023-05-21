@@ -97,7 +97,7 @@ export default class Inicio extends React.Component {
                             </div><div className="col-4">
                                 <div className="card-body">
                                     <h5 className="card-title fst-italic fw-bolder">
-                                        <a href="https://www.prozis.com/es/es" target="_blank">MyProtein</a>
+                                        <a href="https://www.prozis.com/es/es" target="_blank">Prozis</a>
                                     </h5>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@ export default class Inicio extends React.Component {
                             <div className="col-4">
                                 <div className="card-body">
                                     <h5 className="card-title fst-italic fw-bolder">
-                                        <a href="https://www.hsnstore.com/" target="_blank">MyProtein</a>
+                                        <a href="https://www.hsnstore.com/" target="_blank">HSN</a>
                                     </h5>
                                 </div>
                             </div>
