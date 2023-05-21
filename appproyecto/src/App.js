@@ -22,11 +22,9 @@ export default class App extends React.Component {
     let btn = document.querySelector(".signup input[type=submit]");
     let repPassword = element.target.value;
     if (repPassword != password) {
-      // element.target.style.background = "rgba(255, 69, 29, 0.3)";
       element.target.classList = "border border-danger";
       btn.disabled = true;
     } else {
-      // element.target.style.background = "rgba(29, 255, 84, 0.3)";
       element.target.classList = "border-success";
       btn.disabled = false;
     }
@@ -51,8 +49,7 @@ export default class App extends React.Component {
         let boolean = consulta[0];
         let datos = consulta[1];
 
-        //LA FUNCION DEVOLVERÁ TRUE O FALSE.
-        //EN FUNCIÓN DE LO QUE DEVUELVA, EJECUTA UNA FUNCIÓN U OTRA
+        //INICIO DE LOCALSTORAGE
         if (boolean === true) {
           localStorage.setItem("username", datos.username);
           localStorage.setItem("mail", datos.correo);

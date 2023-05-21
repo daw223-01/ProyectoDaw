@@ -292,7 +292,7 @@ class DatosRutina extends React.Component {
         let datosRutina = this.props.datosRutina;
 
         let lista = Object.keys(datosRutina).map(element => (
-            <div class="row border-bottom">
+            <div class="row border-bottom align-items-center">
                 <div class="col text-wrap me-2 p-1">{datosRutina[element].nomEjercicio}</div>
                 <div class="col text-wrap me-2 p-1">{datosRutina[element].rondas}</div>
                 <div class="col text-wrap me-2 p-1">{datosRutina[element].repeticiones}</div>

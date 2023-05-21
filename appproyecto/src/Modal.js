@@ -60,6 +60,7 @@ export default class Modal extends React.Component {
         let desc = this.props.datos.descripcion;
 
         //LISTA DE LAS RUTINAS DE ESE USUARIO
+        //ITERACIÓN MEDIANTE LISTA DE KEYS DEL OBJETO
         let listaRutinas = Object.keys(this.state.rutinas).map((rutina, index)=>(
             <option>
                 {this.state.rutinas[rutina]}
