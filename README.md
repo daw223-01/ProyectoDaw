@@ -1,4 +1,4 @@
-<### REPOSITORIO PROYECTO NOW! EXERCISE>
+<h2>REPOSITORIO PROYECTO NOW! EXERCISE</p>
 
 <p>Este repositorio contiene:</p>
 <ul>
