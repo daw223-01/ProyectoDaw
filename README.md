@@ -1,4 +1,4 @@
-<h2>REPOSITORIO PROYECTO NOW! EXERCISE</p>
+<h2>REPOSITORIO PROYECTO NOW! EXERCISE</h2>
 
 <p>Este repositorio contiene:</p>
 <ul>
@@ -8,7 +8,7 @@
     <li>Script SQL para la creación de tablas e inserción de datos en la base de datos</li>
 </ul>
 
-<h2>INSTALACIÓN DE LA APLICACIÓN EN DOCKER</p>
+<h2>INSTALACIÓN DE LA APLICACIÓN EN DOCKER</h2>
 <p>Este proyecto está pensado para ser utilizado con Docker e instalado mediante los dos ficheros, docker-compose.yml y Dockerfile</p>
 
 <ol type="i" start="1">
