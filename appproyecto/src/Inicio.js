@@ -77,14 +77,14 @@ export default class Inicio extends React.Component {
                     {/* MYPROTEIN */}
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
                         <div className="row g-0">
-                            <div className="col-4">
+                            <div className="col">
                                 <div className="card-body">
                                     <h5 className="card-title fst-italic fw-bolder">
                                         <a href="https://www.myprotein.es/" target="_blank">MyProtein</a>
                                     </h5>
                                 </div>
                             </div>
-                            <div className="col-7">
+                            <div className="col align-self-center">
                                 <img class="card-image w-75" src={mp}></img>
                             </div>
                         </div>
@@ -94,14 +94,14 @@ export default class Inicio extends React.Component {
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
                         <div className="row g-0">
                             <div className="row g-0">
-                            </div><div className="col-4">
+                            </div><div className="col">
                                 <div className="card-body">
                                     <h5 className="card-title fst-italic fw-bolder">
                                         <a href="https://www.prozis.com/es/es" target="_blank">Prozis</a>
                                     </h5>
                                 </div>
                             </div>
-                            <div className="col-7">
+                            <div className="col align-self-center">
                                 <img class="card-image w-75" src={proz}></img>
                             </div>
                         </div>
@@ -110,14 +110,14 @@ export default class Inicio extends React.Component {
                     {/* HSN */}
                     <div className="card col-12 col-sm-9 shadow bg-transparent border border-3 border-light mb-3">
                         <div className="row g-0">
-                            <div className="col-4">
+                            <div className="col">
                                 <div className="card-body">
                                     <h5 className="card-title fst-italic fw-bolder">
                                         <a href="https://www.hsnstore.com/" target="_blank">HSN</a>
                                     </h5>
                                 </div>
                             </div>
-                            <div className="col-7">
+                            <div className="col align-self-center">
                                 <img class="card-image w-75" src={hsn}></img>
                             </div>
                         </div>

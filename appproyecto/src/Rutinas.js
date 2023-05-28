@@ -332,7 +332,7 @@ class DatosRutina extends React.Component {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-outline-danger col-2" onClick={this.deleteRutina.bind(this)}>Eliminar rutina</button>
+                            <button type="button" className="btn btn-outline-danger" onClick={this.deleteRutina.bind(this)}>Eliminar rutina</button>
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
